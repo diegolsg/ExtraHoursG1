@@ -1,0 +1,6 @@
+@ExtraHours.Api_HostAddress = http://localhost:5011
+
+GET {{ExtraHours.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
