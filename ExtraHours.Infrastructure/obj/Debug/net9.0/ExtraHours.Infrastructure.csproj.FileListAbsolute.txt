@@ -1,0 +1,6 @@
+C:\Users\sebas\nodo\ExtraHoursG1\ExtraHours.Infrastructure\obj\Debug\net9.0\ExtraHours.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\sebas\nodo\ExtraHoursG1\ExtraHours.Infrastructure\obj\Debug\net9.0\ExtraHours.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sebas\nodo\ExtraHoursG1\ExtraHours.Infrastructure\obj\Debug\net9.0\ExtraHours.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\sebas\nodo\ExtraHoursG1\ExtraHours.Infrastructure\obj\Debug\net9.0\ExtraHours.Infrastructure.AssemblyInfo.cs
+C:\Users\sebas\nodo\ExtraHoursG1\ExtraHours.Infrastructure\obj\Debug\net9.0\ExtraHours.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\sebas\nodo\ExtraHoursG1\ExtraHours.Infrastructure\obj\Debug\net9.0\ExtraHours.Infrastructure.sourcelink.json
