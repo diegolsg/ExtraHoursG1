@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ExtraHours.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f06e2c94b7ccc737cfcf5409a472e1af76cdc495")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+68d0bd4e87ec500aad6257e222f1280476829a0e")]
 [assembly: System.Reflection.AssemblyProductAttribute("ExtraHours.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ExtraHours.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
