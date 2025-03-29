@@ -10,3 +10,16 @@ C:\nodo\ExtraHours\ExtraHours.Core\obj\Debug\net9.0\ExtraHours.Core.dll
 C:\nodo\ExtraHours\ExtraHours.Core\obj\Debug\net9.0\refint\ExtraHours.Core.dll
 C:\nodo\ExtraHours\ExtraHours.Core\obj\Debug\net9.0\ExtraHours.Core.pdb
 C:\nodo\ExtraHours\ExtraHours.Core\obj\Debug\net9.0\ref\ExtraHours.Core.dll
+C:\Users\sebas\nodo\ExtraHoursG1\ExtraHours.Core\bin\Debug\net9.0\ExtraHours.Core.deps.json
+C:\Users\sebas\nodo\ExtraHoursG1\ExtraHours.Core\bin\Debug\net9.0\ExtraHours.Core.dll
+C:\Users\sebas\nodo\ExtraHoursG1\ExtraHours.Core\bin\Debug\net9.0\ExtraHours.Core.pdb
+C:\Users\sebas\nodo\ExtraHoursG1\ExtraHours.Core\obj\Debug\net9.0\ExtraHours.Core.csproj.AssemblyReference.cache
+C:\Users\sebas\nodo\ExtraHoursG1\ExtraHours.Core\obj\Debug\net9.0\ExtraHours.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\sebas\nodo\ExtraHoursG1\ExtraHours.Core\obj\Debug\net9.0\ExtraHours.Core.AssemblyInfoInputs.cache
+C:\Users\sebas\nodo\ExtraHoursG1\ExtraHours.Core\obj\Debug\net9.0\ExtraHours.Core.AssemblyInfo.cs
+C:\Users\sebas\nodo\ExtraHoursG1\ExtraHours.Core\obj\Debug\net9.0\ExtraHours.Core.csproj.CoreCompileInputs.cache
+C:\Users\sebas\nodo\ExtraHoursG1\ExtraHours.Core\obj\Debug\net9.0\ExtraHours.Core.sourcelink.json
+C:\Users\sebas\nodo\ExtraHoursG1\ExtraHours.Core\obj\Debug\net9.0\ExtraHours.Core.dll
+C:\Users\sebas\nodo\ExtraHoursG1\ExtraHours.Core\obj\Debug\net9.0\refint\ExtraHours.Core.dll
+C:\Users\sebas\nodo\ExtraHoursG1\ExtraHours.Core\obj\Debug\net9.0\ExtraHours.Core.pdb
+C:\Users\sebas\nodo\ExtraHoursG1\ExtraHours.Core\obj\Debug\net9.0\ref\ExtraHours.Core.dll
