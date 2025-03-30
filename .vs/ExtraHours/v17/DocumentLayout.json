@@ -1,38 +1,30 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\nodo\\ExtraHours\\",
+  "WorkspaceRootPath": "C:\\nodo\\ExtraHoursG1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{11196562-72B5-4E7F-BEC1-4D0B4632F78D}|ExtraHours.Core\\ExtraHours.Core.csproj|c:\\nodo\\extrahours\\extrahours.core\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{11196562-72B5-4E7F-BEC1-4D0B4632F78D}|ExtraHours.Core\\ExtraHours.Core.csproj|c:\\nodo\\extrahoursg1\\extrahours.core\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{11196562-72B5-4E7F-BEC1-4D0B4632F78D}|ExtraHours.Core\\ExtraHours.Core.csproj|solutionrelative:extrahours.core\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DF3164ED-99C9-4257-AA49-AC19B9548B1B}|ExtraHours.Infrastructure\\ExtraHours.Infrastructure.csproj|c:\\nodo\\extrahours\\extrahours.infrastructure\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF3164ED-99C9-4257-AA49-AC19B9548B1B}|ExtraHours.Infrastructure\\ExtraHours.Infrastructure.csproj|solutionrelative:extrahours.infrastructure\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{11196562-72B5-4E7F-BEC1-4D0B4632F78D}|ExtraHours.Core\\ExtraHours.Core.csproj|c:\\nodo\\extrahoursg1\\extrahours.core\\models\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11196562-72B5-4E7F-BEC1-4D0B4632F78D}|ExtraHours.Core\\ExtraHours.Core.csproj|solutionrelative:extrahours.core\\models\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{11196562-72B5-4E7F-BEC1-4D0B4632F78D}|ExtraHours.Core\\ExtraHours.Core.csproj|c:\\nodo\\extrahours\\extrahours.core\\interfeces\\irepositoties\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11196562-72B5-4E7F-BEC1-4D0B4632F78D}|ExtraHours.Core\\ExtraHours.Core.csproj|solutionrelative:extrahours.core\\interfeces\\irepositoties\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{11196562-72B5-4E7F-BEC1-4D0B4632F78D}|ExtraHours.Core\\ExtraHours.Core.csproj|c:\\nodo\\extrahoursg1\\extrahours.core\\models\\rolepermission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11196562-72B5-4E7F-BEC1-4D0B4632F78D}|ExtraHours.Core\\ExtraHours.Core.csproj|solutionrelative:extrahours.core\\models\\rolepermission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{02996FD5-4435-4BD7-BA15-57FA78090D19}|ExtraHours.Api\\ExtraHours.Api.csproj|c:\\nodo\\extrahours\\extrahours.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{02996FD5-4435-4BD7-BA15-57FA78090D19}|ExtraHours.Api\\ExtraHours.Api.csproj|solutionrelative:extrahours.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{11196562-72B5-4E7F-BEC1-4D0B4632F78D}|ExtraHours.Core\\ExtraHours.Core.csproj|c:\\nodo\\extrahoursg1\\extrahours.core\\models\\area.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11196562-72B5-4E7F-BEC1-4D0B4632F78D}|ExtraHours.Core\\ExtraHours.Core.csproj|solutionrelative:extrahours.core\\models\\area.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{02996FD5-4435-4BD7-BA15-57FA78090D19}|ExtraHours.Api\\ExtraHours.Api.csproj|c:\\nodo\\extrahours\\extrahours.api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{02996FD5-4435-4BD7-BA15-57FA78090D19}|ExtraHours.Api\\ExtraHours.Api.csproj|solutionrelative:extrahours.api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{11196562-72B5-4E7F-BEC1-4D0B4632F78D}|ExtraHours.Core\\ExtraHours.Core.csproj|c:\\nodo\\extrahoursg1\\extrahours.core\\models\\extrahour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11196562-72B5-4E7F-BEC1-4D0B4632F78D}|ExtraHours.Core\\ExtraHours.Core.csproj|solutionrelative:extrahours.core\\models\\extrahour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{11196562-72B5-4E7F-BEC1-4D0B4632F78D}|ExtraHours.Core\\ExtraHours.Core.csproj|c:\\nodo\\extrahours\\extrahours.core\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11196562-72B5-4E7F-BEC1-4D0B4632F78D}|ExtraHours.Core\\ExtraHours.Core.csproj|solutionrelative:extrahours.core\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11196562-72B5-4E7F-BEC1-4D0B4632F78D}|ExtraHours.Core\\ExtraHours.Core.csproj|c:\\nodo\\extrahours\\extrahours.core\\interfeces\\iservices\\iservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11196562-72B5-4E7F-BEC1-4D0B4632F78D}|ExtraHours.Core\\ExtraHours.Core.csproj|solutionrelative:extrahours.core\\interfeces\\iservices\\iservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF3164ED-99C9-4257-AA49-AC19B9548B1B}|ExtraHours.Infrastructure\\ExtraHours.Infrastructure.csproj|c:\\nodo\\extrahours\\extrahours.infrastructure\\data\\appdbcontex.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF3164ED-99C9-4257-AA49-AC19B9548B1B}|ExtraHours.Infrastructure\\ExtraHours.Infrastructure.csproj|solutionrelative:extrahours.infrastructure\\data\\appdbcontex.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{11196562-72B5-4E7F-BEC1-4D0B4632F78D}|ExtraHours.Core\\ExtraHours.Core.csproj|c:\\nodo\\extrahoursg1\\extrahours.core\\models\\report.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11196562-72B5-4E7F-BEC1-4D0B4632F78D}|ExtraHours.Core\\ExtraHours.Core.csproj|solutionrelative:extrahours.core\\models\\report.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 389,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -51,105 +43,79 @@
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\nodo\\ExtraHours\\ExtraHours.Api\\Program.cs",
-              "RelativeDocumentMoniker": "ExtraHours.Api\\Program.cs",
-              "ToolTip": "C:\\nodo\\ExtraHours\\ExtraHours.Api\\Program.cs",
-              "RelativeToolTip": "ExtraHours.Api\\Program.cs",
+              "Title": "Area.cs",
+              "DocumentMoniker": "C:\\nodo\\ExtraHoursG1\\ExtraHours.Core\\Models\\Area.cs",
+              "RelativeDocumentMoniker": "ExtraHours.Core\\Models\\Area.cs",
+              "ToolTip": "C:\\nodo\\ExtraHoursG1\\ExtraHours.Core\\Models\\Area.cs",
+              "RelativeToolTip": "ExtraHours.Core\\Models\\Area.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-30T14:35:54.733Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Role.cs",
+              "DocumentMoniker": "C:\\nodo\\ExtraHoursG1\\ExtraHours.Core\\Models\\Role.cs",
+              "RelativeDocumentMoniker": "ExtraHours.Core\\Models\\Role.cs",
+              "ToolTip": "C:\\nodo\\ExtraHoursG1\\ExtraHours.Core\\Models\\Role.cs",
+              "RelativeToolTip": "ExtraHours.Core\\Models\\Role.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-25T00:51:35.42Z",
+              "WhenOpened": "2025-03-30T14:08:39.462Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RolePermission.cs",
+              "DocumentMoniker": "C:\\nodo\\ExtraHoursG1\\ExtraHours.Core\\Models\\RolePermission.cs",
+              "RelativeDocumentMoniker": "ExtraHours.Core\\Models\\RolePermission.cs",
+              "ToolTip": "C:\\nodo\\ExtraHoursG1\\ExtraHours.Core\\Models\\RolePermission.cs",
+              "RelativeToolTip": "ExtraHours.Core\\Models\\RolePermission.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-30T14:07:54.336Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "C:\\nodo\\ExtraHours\\ExtraHours.Api\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "ExtraHours.Api\\Controllers\\UserController.cs",
-              "ToolTip": "C:\\nodo\\ExtraHours\\ExtraHours.Api\\Controllers\\UserController.cs",
-              "RelativeToolTip": "ExtraHours.Api\\Controllers\\UserController.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABcAAAAyAAAAAAAAAA==",
+              "Title": "ExtraHour.cs",
+              "DocumentMoniker": "C:\\nodo\\ExtraHoursG1\\ExtraHours.Core\\Models\\ExtraHour.cs",
+              "RelativeDocumentMoniker": "ExtraHours.Core\\Models\\ExtraHour.cs",
+              "ToolTip": "C:\\nodo\\ExtraHoursG1\\ExtraHours.Core\\Models\\ExtraHour.cs",
+              "RelativeToolTip": "ExtraHours.Core\\Models\\ExtraHour.cs",
+              "ViewState": "AgIAAAYAAADgm970pjcnwA8AAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-25T00:17:24.806Z",
+              "WhenOpened": "2025-03-30T14:07:03.376Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "UserService.cs",
-              "DocumentMoniker": "C:\\nodo\\ExtraHours\\ExtraHours.Core\\Services\\UserService.cs",
-              "RelativeDocumentMoniker": "ExtraHours.Core\\Services\\UserService.cs",
-              "ToolTip": "C:\\nodo\\ExtraHours\\ExtraHours.Core\\Services\\UserService.cs",
-              "RelativeToolTip": "ExtraHours.Core\\Services\\UserService.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAADwvx8AAAAQAAAAAAAAAA==",
+              "Title": "Report.cs",
+              "DocumentMoniker": "C:\\nodo\\ExtraHoursG1\\ExtraHours.Core\\Models\\Report.cs",
+              "RelativeDocumentMoniker": "ExtraHours.Core\\Models\\Report.cs",
+              "ToolTip": "C:\\nodo\\ExtraHoursG1\\ExtraHours.Core\\Models\\Report.cs",
+              "RelativeToolTip": "ExtraHours.Core\\Models\\Report.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T20:46:49.108Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "IService.cs",
-              "DocumentMoniker": "C:\\nodo\\ExtraHours\\ExtraHours.Core\\Interfeces\\IServices\\IService.cs",
-              "RelativeDocumentMoniker": "ExtraHours.Core\\Interfeces\\IServices\\IService.cs",
-              "ToolTip": "C:\\nodo\\ExtraHours\\ExtraHours.Core\\Interfeces\\IServices\\IService.cs",
-              "RelativeToolTip": "ExtraHours.Core\\Interfeces\\IServices\\IService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T20:44:43.94Z",
+              "WhenOpened": "2025-03-30T14:05:53.083Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "User.cs",
-              "DocumentMoniker": "C:\\nodo\\ExtraHours\\ExtraHours.Core\\Models\\User.cs",
+              "DocumentMoniker": "C:\\nodo\\ExtraHoursG1\\ExtraHours.Core\\Models\\User.cs",
               "RelativeDocumentMoniker": "ExtraHours.Core\\Models\\User.cs",
-              "ToolTip": "C:\\nodo\\ExtraHours\\ExtraHours.Core\\Models\\User.cs",
+              "ToolTip": "C:\\nodo\\ExtraHoursG1\\ExtraHours.Core\\Models\\User.cs",
               "RelativeToolTip": "ExtraHours.Core\\Models\\User.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAADgvxAAAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T20:34:27.165Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "IRepository.cs",
-              "DocumentMoniker": "C:\\nodo\\ExtraHours\\ExtraHours.Core\\Interfeces\\IRepositoties\\IRepository.cs",
-              "RelativeDocumentMoniker": "ExtraHours.Core\\Interfeces\\IRepositoties\\IRepository.cs",
-              "ToolTip": "C:\\nodo\\ExtraHours\\ExtraHours.Core\\Interfeces\\IRepositoties\\IRepository.cs",
-              "RelativeToolTip": "ExtraHours.Core\\Interfeces\\IRepositoties\\IRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T20:28:06.446Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UserRepository.cs",
-              "DocumentMoniker": "C:\\nodo\\ExtraHours\\ExtraHours.Infrastructure\\Repositories\\UserRepository.cs",
-              "RelativeDocumentMoniker": "ExtraHours.Infrastructure\\Repositories\\UserRepository.cs",
-              "ToolTip": "C:\\nodo\\ExtraHours\\ExtraHours.Infrastructure\\Repositories\\UserRepository.cs",
-              "RelativeToolTip": "ExtraHours.Infrastructure\\Repositories\\UserRepository.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAswBQAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T20:26:27.406Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "AppDbContex.cs",
-              "DocumentMoniker": "C:\\nodo\\ExtraHours\\ExtraHours.Infrastructure\\Data\\AppDbContex.cs",
-              "RelativeDocumentMoniker": "ExtraHours.Infrastructure\\Data\\AppDbContex.cs",
-              "ToolTip": "C:\\nodo\\ExtraHours\\ExtraHours.Infrastructure\\Data\\AppDbContex.cs",
-              "RelativeToolTip": "ExtraHours.Infrastructure\\Data\\AppDbContex.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-24T20:25:24.075Z",
+              "WhenOpened": "2025-03-30T14:04:59.931Z",
               "EditorCaption": ""
             }
           ]

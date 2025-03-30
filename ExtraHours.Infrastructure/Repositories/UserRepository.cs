@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ExtraHours.Core.Models;
-using ExtraHours.Core.Interfeces.IRepositoties;
-using ExtraHours.Infrastructure.Data;
+﻿
 
+
+using ExtraHours.Core.Interfeces.IRepositoties;
+using ExtraHours.Core.Models;
+using ExtraHours.Infrastructure.Data;
 
 namespace ExtraHours.Infrastructure.Repositories
 {
     public class UserRepository : IRepository<User>
     {
-        readonly AppDbContex _context;
-        public UserRepository(AppDbContex context)
+        readonly AppDbContext _context;
+        public UserRepository(AppDbContext context)
         {
             _context = context;
         }

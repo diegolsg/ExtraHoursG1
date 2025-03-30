@@ -1,15 +1,18 @@
 ﻿
 
+using ExtraHours.Core.Interfeces.IServices;
 using ExtraHours.Core.Models;
 using ExtraHours.Core.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ExtraHours.Api.Controllers
 {
+    [ApiController]
+    [Route("/api/users")]
     public class UserController
     {
-        readonly UserService _userService;
-        public UserController(UserService userService)
+        readonly IService<User> _userService;
+        public UserController(IService<User> userService)
         {
             _userService = userService;
         }

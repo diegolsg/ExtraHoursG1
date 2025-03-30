@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ExtraHours.Core\ExtraHours.Core.csproj" />
+    <ProjectReference Include="..\ExtraHours.Infrastructure\ExtraHours.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

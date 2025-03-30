@@ -1,6 +1,6 @@
 namespace ExtraHours.Core.Models
 {
-    public class Settings
+    public class Setting
     {
         public int Id { get; set; }
         public required string Key { get; set; }
