@@ -17,7 +17,7 @@ namespace ExtraHours.Core.Models
         public Area Area { get; set; }
         public Role Roles { get; set; }
         public  Boolean IsActive { get; set; }
-        public DateTime Created { get; set; } = DateTime.Now;
-        public DateTime Updated { get; set; } = DateTime.Now;
+        public DateTime Created { get; set; } = DateTime.UtcNow;
+        public DateTime Updated { get; set; } = DateTime.UtcNow;
     }
 }

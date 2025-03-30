@@ -1,4 +1,5 @@
 
+using ExtraHours.Core.dto;
 using ExtraHours.Core.Interfeces.IRepositoties;
 using ExtraHours.Core.Interfeces.IServices;
 using ExtraHours.Core.Models;
@@ -18,7 +19,7 @@ builder.Services.AddOpenApi();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(connectionString));
 builder.Services.AddScoped<IRepository<User>, UserRepository>();
-builder.Services.AddScoped<IService<User>, UserService>();
+builder.Services.AddScoped<IService<UserDto>, UserService>();
 
 var app = builder.Build();
 
