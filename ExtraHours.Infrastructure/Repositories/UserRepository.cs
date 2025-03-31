@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ExtraHours.Core.Models;
-using ExtraHours.Core.Interfeces.IRepositoties;
-using ExtraHours.Infrastructure.Data;
+﻿
 
+
+using ExtraHours.Core.Interfeces.IRepositoties;
+using ExtraHours.Core.Models;
+using ExtraHours.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace ExtraHours.Infrastructure.Repositories
 {
     public class UserRepository : IRepository<User>
     {
-        readonly AppDbContex _context;
-        public UserRepository(AppDbContex context)
+        readonly AppDbContext _context;
+        public UserRepository(AppDbContext context)
         {
             _context = context;
         }
@@ -22,22 +20,45 @@ namespace ExtraHours.Infrastructure.Repositories
         {
             return await Task.FromResult(_context.Users.ToList());
         }
-        public Task<User> GetById(int id)
+        public async Task<User> GetById(int id)
         {
-            var user = _context.Users.FirstOrDefault(x => x.Id == id);
-            return Task.FromResult(user);
+            var user = await _context.Users.FindAsync(id);
+            if (user == null)
+            {
+                throw new KeyNotFoundException($"User with ID {id} not found");
+            }
+            return user;
         }
-        public Task Create(User entity)
+        public async Task Create(User entity)
         {
-            throw new NotImplementedException();
+            await _context.AddAsync(entity);
+            await _context.SaveChangesAsync();
         }
-        public Task Update(User entity)
+        public async Task Update(User entity)
         {
-            throw new NotImplementedException();
+            var userExist = await _context.Users
+                .FirstOrDefaultAsync(p => p.Id == entity.Id);
+
+            if (userExist == null)
+            {
+                throw new KeyNotFoundException($"El usuario con ID {entity.Id} no existe.");
+            }
+
+            userExist.Name = entity.Name;
+            userExist.Password = entity.Password;
+            userExist.Email = entity.Email;
+            userExist.PhoneNumber = entity.PhoneNumber;
+            userExist.Code = entity.Code;
+            userExist.AreaId = entity.AreaId;
+            userExist.RoleId = entity.RoleId;
+
+            await _context.SaveChangesAsync();
         }
-        public Task Delete(int id)
+        public async Task Delete(int id)
         {
-            throw new NotImplementedException();
+            User user = await GetById(id);
+            _context.Users.Remove(user);
+            await _context.SaveChangesAsync();
         }
     }
 }

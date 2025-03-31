@@ -1,14 +1,18 @@
 namespace ExtraHours.Core.Models {
-    public class ExtraHours
+    public class ExtraHour
     {
         public int Id { get; set;}
         public int userId { get; set;}
-        public Users users { get; set; } = null!;
+        public User users { get; set; } = null!;
         public DateTime date { get; set;}
         public int StartTime { get; set;}
         public int EndTime { get; set;}
         public string Status { get; set; } = null!;
         public DateTime Created { get; set; } = DateTime.Now;
         public DateTime Updated { get; set; } = DateTime.Now;
+
+        //nuevas
+        public int ExtraHoursTypeId { get; set; }
+        public required ExtraHourType ExtraHoursType { get; set; }
     }
 }
