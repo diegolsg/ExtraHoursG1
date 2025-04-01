@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "5OiK+DZEqZR/9Qb8iWj1yh6iihVv5XeoR6TpVJqG/z0=",
+  "Source": "ExtraHours.Api",
+  "BasePath": "_content/ExtraHours.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

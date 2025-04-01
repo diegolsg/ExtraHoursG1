@@ -751,23 +751,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Diego Suaza\\.nuget\\packages\\": {},
+    "C:\\Users\\aleja\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\nodo\\ExtraHours\\ExtraHours.Core\\ExtraHours.Core.csproj",
+      "projectUniqueName": "C:\\Users\\aleja\\OneDrive\\Imágenes\\ALEJO ESTUDIO\\EAFIT\\ModuloIII\\AmadeusApi\\Proyecto\\ExtraHoursG1\\ExtraHours.Core\\ExtraHours.Core.csproj",
       "projectName": "ExtraHours.Core",
-      "projectPath": "C:\\nodo\\ExtraHours\\ExtraHours.Core\\ExtraHours.Core.csproj",
-      "packagesPath": "C:\\Users\\Diego Suaza\\.nuget\\packages\\",
-      "outputPath": "C:\\nodo\\ExtraHours\\ExtraHours.Core\\obj\\",
+      "projectPath": "C:\\Users\\aleja\\OneDrive\\Imágenes\\ALEJO ESTUDIO\\EAFIT\\ModuloIII\\AmadeusApi\\Proyecto\\ExtraHoursG1\\ExtraHours.Core\\ExtraHours.Core.csproj",
+      "packagesPath": "C:\\Users\\aleja\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\aleja\\OneDrive\\Imágenes\\ALEJO ESTUDIO\\EAFIT\\ModuloIII\\AmadeusApi\\Proyecto\\ExtraHoursG1\\ExtraHours.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Diego Suaza\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\aleja\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

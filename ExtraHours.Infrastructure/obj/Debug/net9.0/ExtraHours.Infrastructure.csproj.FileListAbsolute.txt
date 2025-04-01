@@ -1,0 +1,16 @@
+C:\Users\aleja\OneDrive\Imágenes\ALEJO ESTUDIO\EAFIT\ModuloIII\AmadeusApi\Proyecto\ExtraHoursG1\ExtraHours.Infrastructure\bin\Debug\net9.0\ExtraHours.Infrastructure.deps.json
+C:\Users\aleja\OneDrive\Imágenes\ALEJO ESTUDIO\EAFIT\ModuloIII\AmadeusApi\Proyecto\ExtraHoursG1\ExtraHours.Infrastructure\bin\Debug\net9.0\ExtraHours.Infrastructure.dll
+C:\Users\aleja\OneDrive\Imágenes\ALEJO ESTUDIO\EAFIT\ModuloIII\AmadeusApi\Proyecto\ExtraHoursG1\ExtraHours.Infrastructure\bin\Debug\net9.0\ExtraHours.Infrastructure.pdb
+C:\Users\aleja\OneDrive\Imágenes\ALEJO ESTUDIO\EAFIT\ModuloIII\AmadeusApi\Proyecto\ExtraHoursG1\ExtraHours.Infrastructure\bin\Debug\net9.0\ExtraHours.Core.dll
+C:\Users\aleja\OneDrive\Imágenes\ALEJO ESTUDIO\EAFIT\ModuloIII\AmadeusApi\Proyecto\ExtraHoursG1\ExtraHours.Infrastructure\bin\Debug\net9.0\ExtraHours.Core.pdb
+C:\Users\aleja\OneDrive\Imágenes\ALEJO ESTUDIO\EAFIT\ModuloIII\AmadeusApi\Proyecto\ExtraHoursG1\ExtraHours.Infrastructure\obj\Debug\net9.0\ExtraHours.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\aleja\OneDrive\Imágenes\ALEJO ESTUDIO\EAFIT\ModuloIII\AmadeusApi\Proyecto\ExtraHoursG1\ExtraHours.Infrastructure\obj\Debug\net9.0\ExtraHours.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aleja\OneDrive\Imágenes\ALEJO ESTUDIO\EAFIT\ModuloIII\AmadeusApi\Proyecto\ExtraHoursG1\ExtraHours.Infrastructure\obj\Debug\net9.0\ExtraHours.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\aleja\OneDrive\Imágenes\ALEJO ESTUDIO\EAFIT\ModuloIII\AmadeusApi\Proyecto\ExtraHoursG1\ExtraHours.Infrastructure\obj\Debug\net9.0\ExtraHours.Infrastructure.AssemblyInfo.cs
+C:\Users\aleja\OneDrive\Imágenes\ALEJO ESTUDIO\EAFIT\ModuloIII\AmadeusApi\Proyecto\ExtraHoursG1\ExtraHours.Infrastructure\obj\Debug\net9.0\ExtraHours.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\aleja\OneDrive\Imágenes\ALEJO ESTUDIO\EAFIT\ModuloIII\AmadeusApi\Proyecto\ExtraHoursG1\ExtraHours.Infrastructure\obj\Debug\net9.0\ExtraHours.Infrastructure.sourcelink.json
+C:\Users\aleja\OneDrive\Imágenes\ALEJO ESTUDIO\EAFIT\ModuloIII\AmadeusApi\Proyecto\ExtraHoursG1\ExtraHours.Infrastructure\obj\Debug\net9.0\ExtraHou.2FF8663B.Up2Date
+C:\Users\aleja\OneDrive\Imágenes\ALEJO ESTUDIO\EAFIT\ModuloIII\AmadeusApi\Proyecto\ExtraHoursG1\ExtraHours.Infrastructure\obj\Debug\net9.0\ExtraHours.Infrastructure.dll
+C:\Users\aleja\OneDrive\Imágenes\ALEJO ESTUDIO\EAFIT\ModuloIII\AmadeusApi\Proyecto\ExtraHoursG1\ExtraHours.Infrastructure\obj\Debug\net9.0\refint\ExtraHours.Infrastructure.dll
+C:\Users\aleja\OneDrive\Imágenes\ALEJO ESTUDIO\EAFIT\ModuloIII\AmadeusApi\Proyecto\ExtraHoursG1\ExtraHours.Infrastructure\obj\Debug\net9.0\ExtraHours.Infrastructure.pdb
+C:\Users\aleja\OneDrive\Imágenes\ALEJO ESTUDIO\EAFIT\ModuloIII\AmadeusApi\Proyecto\ExtraHoursG1\ExtraHours.Infrastructure\obj\Debug\net9.0\ref\ExtraHours.Infrastructure.dll
