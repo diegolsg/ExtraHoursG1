@@ -9,9 +9,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.VisualBasic;
 
-namespace ExtraHours.Infrastructure.Service 
+namespace ExtraHours.Infrastructure.Services
 {
-    public class UserService : IUserService 
+    public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
         private readonly PasswordHasher<User> _passwordHasher;
@@ -27,21 +27,29 @@ namespace ExtraHours.Infrastructure.Service
 
         public async Task<IEnumerable<User>> GetUsers() => await _userRepository.GetAllUsersAsync();
 
-        public async Task<string?> Authenticate(string email, string password){
+        public async Task<string?> Authenticate(string email, string password)
+        {
             var user = await _userRepository.GetByEmailAsync(email);
-            if(user == null) return null;
+            if (user == null) return null;
             var result = _passwordHasher.VerifyHashedPassword(user, user.Password, password);
-            return result == PasswordVerificationResult.Success ? GenerateJwtToken(user): null;
+            return result == PasswordVerificationResult.Success ? GenerateJwtToken(user) : null;
         }
 
         public async Task<User> Register(User user)
         {
             user.Password = _passwordHasher.HashPassword(user, user.Password);
+            user.Code = GenerateCodigoEmpresarial();
             await _userRepository.AddUserAsync(user);
             return user;
         }
 
-        private string GenerateJwtToken(User user){
+        private string GenerateCodigoEmpresarial()
+        {
+            return "EMP-" + Guid.NewGuid().ToString().Substring(0, 8).ToUpper();
+        }
+
+        private string GenerateJwtToken(User user)
+        {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"] ?? "secret_key"));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 

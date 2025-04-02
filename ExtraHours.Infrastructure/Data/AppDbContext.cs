@@ -19,7 +19,6 @@ namespace ExtraHours.Infrastructure.Data
         public DbSet<RolePermission> RolePermissions { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<Permission> Permissions { get; set; }
-        public DbSet<Area> Areas { get; set; }
         public DbSet<ExtraHour> ExtraHours { get; set; }
         public DbSet<ExtraHourType> ExtraHourTypes { get; set; }
 

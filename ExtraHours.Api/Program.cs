@@ -2,7 +2,8 @@ using System.Text;
 using ExtraHours.Core.Repositories;
 using ExtraHours.Core.Services;
 using ExtraHours.Infrastructure.Data;
-using ExtraHours.Infrastructure.Service;
+using ExtraHours.Infrastructure.Services;
+using ExtraHours.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -52,6 +53,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IExtraHourService, ExtraHourService>();
+builder.Services.AddScoped<IExtraHourRepository, ExtraHourRepository>();
 
 builder.Services.AddControllers();
 builder.Services.AddAuthorization();

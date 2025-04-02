@@ -2,10 +2,10 @@ namespace ExtraHours.Core.Models {
     public class ExtraHour
     {
         public int Id { get; set;}
-        public int userId { get; set;}
+        public int UserId { get; set;}
         public User users { get; set; } = null!;
         public required string Code { get; set; }
-        public DateTime date { get; set;}
+        public DateTime Date { get; set;}
         public int StartTime { get; set;}
         public int EndTime { get; set;}
         public string Status { get; set; } = null!;

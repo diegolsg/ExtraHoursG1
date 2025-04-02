@@ -11,11 +11,9 @@ namespace ExtraHours.Core.Models
         public string Code { get; set; } = GenerateCode();
         public required string Password { get; set; }
         public required string Email { get; set; }
-        public int AreaId { get; set; }
         public int RoleId { get; set; }
 
-        public required Area Area { get; set; }
-        public required Role Roles { get; set; }
+        // public required Role Roles { get; set; }
         public Boolean IsActive { get; set; }
         public DateTime Created { get; set; } = DateTime.UtcNow;
         public DateTime Updated { get; set; } = DateTime.UtcNow;
