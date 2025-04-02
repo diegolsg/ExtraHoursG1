@@ -1,64 +1,46 @@
-﻿
-
-
-using ExtraHours.Core.Interfeces.IRepositoties;
-using ExtraHours.Core.Models;
+﻿using ExtraHours.Core.Models;
 using ExtraHours.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace ExtraHours.Infrastructure.Repositories
-{
-    public class UserRepository : IRepository<User>
+
+namespace ExtraHours.Core.Repositories {
+    public class UserRepository: IUserRepository 
     {
-        readonly AppDbContext _context;
+        private readonly AppDbContext _context;
+
         public UserRepository(AppDbContext context)
         {
             _context = context;
         }
 
-        public async Task<IEnumerable<User>> GetAll()
+        public async Task<IEnumerable<User>> GetAllUsersAsync() => await _context.Users.ToListAsync();
+
+        public async Task<User?> GetUserByIdAsync(int id) => await _context.Users.FindAsync(id);
+
+        public async Task<User?> GetByEmailAsync(string email)
         {
-            return await Task.FromResult(_context.Users.ToList());
+            return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
         }
-        public async Task<User> GetById(int id)
+
+        public async Task AddUserAsync(User user)
         {
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateUserAsync(User user)
+        {
+            _context.Users.Update(user);
+            await _context.SaveChangesAsync();
+        }
+
+         public async Task DeleteUserAsync(int id)
+         {
             var user = await _context.Users.FindAsync(id);
-            if (user == null)
-            {
-                throw new KeyNotFoundException($"User with ID {id} not found");
-            }
-            return user;
-        }
-        public async Task Create(User entity)
-        {
-            await _context.AddAsync(entity);
-            await _context.SaveChangesAsync();
-        }
-        public async Task Update(User entity)
-        {
-            var userExist = await _context.Users
-                .FirstOrDefaultAsync(p => p.Id == entity.Id);
-
-            if (userExist == null)
-            {
-                throw new KeyNotFoundException($"El usuario con ID {entity.Id} no existe.");
-            }
-
-            userExist.Name = entity.Name;
-            userExist.Password = entity.Password;
-            userExist.Email = entity.Email;
-            userExist.PhoneNumber = entity.PhoneNumber;
-            userExist.Code = entity.Code;
-            userExist.AreaId = entity.AreaId;
-            userExist.RoleId = entity.RoleId;
-
-            await _context.SaveChangesAsync();
-        }
-        public async Task Delete(int id)
-        {
-            User user = await GetById(id);
-            _context.Users.Remove(user);
-            await _context.SaveChangesAsync();
-        }
+            if(user != null){
+                _context.Users.Remove(user);
+                await _context.SaveChangesAsync();
+            }  
+         }
     }
 }

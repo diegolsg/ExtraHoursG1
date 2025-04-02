@@ -1,58 +1,36 @@
-﻿
-
-using ExtraHours.Core.dto;
-using ExtraHours.Core.Interfeces.IServices;
+﻿using ExtraHours.Core.Models;
+using ExtraHours.Core.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ExtraHours.Api.Controllers
+namespace ExtraHours.API.Controllers 
 {
+    [Authorize]
+    [Route("api/users")]
     [ApiController]
-    [Route("/api/users")]
-    public class UserController : ControllerBase
+    public class UserController : ControllerBase 
     {
-        readonly IService<UserDto> _userService;
-        public UserController(IService<UserDto> userService)
+        private readonly IUserService _userService;
+
+        public UserController(IUserService userService)
         {
             _userService = userService;
         }
+
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody] User user){
+            await _userService.Register(user);
+            return Ok(user);
+        }
+
         [HttpGet]
-        public async Task<IEnumerable<UserDto>> Get()
+        public async Task<IActionResult> GetUsers()
         {
-            return await _userService.GetAllUserAsync();
-        }
-        [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
-        {
-            try
-            {
-                var user = await _userService.GetByIdUserAsync(id);
-                return Ok(user);
-            }
-            catch (ArgumentException ex)
-            {
-                return NotFound(new { message = ex.Message });
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { message = "Ocurrió un error en el servidor.", details = ex.Message });
-            }
-        }
+            var users = await _userService.GetUsers();
+            return Ok(users);
 
-        [HttpPost]
-        public async Task Post([FromBody] UserDto user)
-        {
-            await _userService.CreateUserAsync(user);
         }
-
-        [HttpPut]
-        public async Task Put([FromBody] UserDto user)
-        {
-            await _userService.UpdateUserAsync(user, user.Id);
-        }
-        [HttpDelete("{id}")]
-        public async Task Delete(int id)
-        {
-            await _userService.DeleteUserAsync(id);
-        }
+        
     }
+
 }

@@ -4,6 +4,7 @@ namespace ExtraHours.Core.Models {
         public int Id { get; set;}
         public int userId { get; set;}
         public User users { get; set; } = null!;
+        public required string Code { get; set; }
         public DateTime date { get; set;}
         public int StartTime { get; set;}
         public int EndTime { get; set;}
@@ -12,7 +13,7 @@ namespace ExtraHours.Core.Models {
         public DateTime Updated { get; set; } = DateTime.Now;
 
         //nuevas
-        public int ExtraHoursTypeId { get; set; }
-        public required ExtraHourType ExtraHoursType { get; set; }
+        // public int ExtraHoursTypeId { get; set; }
+        // public required ExtraHourType ExtraHoursType { get; set; }
     }
 }

@@ -2,6 +2,7 @@ public class dtoExtraHours
 {
     public int Id { get; set; }
     public int UserId { get; set; }
+    public string Code { get; set; } 
     public DateTime Date { get; set; }
     public int StartTime { get; set; }
     public int EndTime { get; set; }

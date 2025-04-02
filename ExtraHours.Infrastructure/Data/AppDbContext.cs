@@ -5,8 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ExtraHours.Core.Models;
-using Microsoft.EntityFrameworkCore;
-using ExtraHours.Core.Models;
 
 namespace ExtraHours.Infrastructure.Data
 {
