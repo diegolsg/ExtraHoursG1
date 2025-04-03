@@ -11,5 +11,6 @@ namespace ExtraHours.Core.Services
         Task<User> GetByNameOrCodeAsync(string search);
         Task<User> CreateUser(User user);
         Task<User> UpdateUser(User entity);
+        Task DeleteUser(int id);
     }
 }

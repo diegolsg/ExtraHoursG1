@@ -64,5 +64,14 @@ namespace ExtraHours.API.Controllers
             await _userService.UpdateUser(entity);
             return Ok(user);
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteUser(int id)
+        {
+            var user = await _userService.GetUserByIdAsync(id);
+            if (user == null) return NotFound();
+            await _userService.DeleteUser(id);
+            return NoContent();
+        }
     }
 }

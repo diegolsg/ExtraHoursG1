@@ -88,5 +88,12 @@ namespace ExtraHours.Infrastructure.Services
             await _userRepository.UpdateUserAsync(userExist);
             return userExist;
         }
+
+        public async Task DeleteUser(int id)
+        {
+            var user = await _userRepository.GetUserByIdAsync(id);
+            if (user == null) throw new Exception("User not found");
+            await _userRepository.DeleteUserAsync(id);
+        }
     }
 }
