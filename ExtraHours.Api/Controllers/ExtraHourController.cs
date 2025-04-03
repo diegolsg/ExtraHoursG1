@@ -1,11 +1,19 @@
+<<<<<<< HEAD
 using Microsoft.AspNetCore.Mvc;
 using ExtraHours.Core.Services;
 using ExtraHours.Core.Dto;
 using ExtraHours.Core.Models;
+=======
+﻿using Azure;
+using ExtraHours.Core.dto;
+using ExtraHours.Core.Interfeces.IServices;
+using Microsoft.AspNetCore.Mvc;
+>>>>>>> origin/diego
 
 namespace ExtraHours.Api.Controllers
 {
     [ApiController]
+<<<<<<< HEAD
     [Route("api/[controller]")]
     public class ExtraHourController : ControllerBase
     {
@@ -47,3 +55,22 @@ namespace ExtraHours.Api.Controllers
         }
     }
 }
+=======
+    [Route("api/hour")]
+    public class ExtraHourController : ControllerBase
+    {
+        readonly IService<ExtraHourDto> _extraHourService;
+        public ExtraHourController(IService<ExtraHourDto> extraHourService)
+        {
+            _extraHourService = extraHourService;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateAsync([FromBody] RegisterHourDto registerHourDto)
+        {
+            var result = await _extraHourService.CreateAsync(registerHourDto);
+            return Ok(result);
+        }
+    }
+}
+>>>>>>> origin/diego

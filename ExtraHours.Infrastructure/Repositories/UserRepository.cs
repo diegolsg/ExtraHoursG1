@@ -5,7 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ExtraHours.Core.Repositories
 {
+<<<<<<< HEAD
     public class UserRepository : IUserRepository
+=======
+    public class UserRepository : IRepository<User>, IUserRepository
+>>>>>>> origin/diego
     {
         private readonly AppDbContext _context;
 
@@ -27,6 +31,7 @@ namespace ExtraHours.Core.Repositories
         {
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
+            return entity;
         }
 
         public async Task UpdateUserAsync(User entity)
@@ -59,6 +64,16 @@ namespace ExtraHours.Core.Repositories
         public async Task<User?> GetByNameOrCodeAsync(string search)
         {
             return await _context.Users.FirstOrDefaultAsync(u => u.Name == search || u.Code == search);
+        }
+
+        public async Task<User> FindByCodeAsync(string code)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Code == code);
+            if (user == null)
+            {
+                throw new KeyNotFoundException($"User with code {code} not found");
+            }
+            return user;
         }
     }
 }
