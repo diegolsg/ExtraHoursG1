@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ExtraHours.Infrastructure.Repositories
 {
-    public class UserRepository : IRepository<User>
+    public class UserRepository : IRepository<User>, IUserRepository
     {
         readonly AppDbContext _context;
         public UserRepository(AppDbContext context)
@@ -29,10 +29,11 @@ namespace ExtraHours.Infrastructure.Repositories
             }
             return user;
         }
-        public async Task Create(User entity)
+        public async Task<User> Create(User entity)
         {
             await _context.AddAsync(entity);
             await _context.SaveChangesAsync();
+            return entity;
         }
         public async Task Update(User entity)
         {
@@ -59,6 +60,16 @@ namespace ExtraHours.Infrastructure.Repositories
             User user = await GetById(id);
             _context.Users.Remove(user);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<User> FindByCodeAsync(string code)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Code == code);
+            if (user == null)
+            {
+                throw new KeyNotFoundException($"User with code {code} not found");
+            }
+            return user;
         }
     }
 }

@@ -18,14 +18,14 @@ namespace ExtraHours.Api.Controllers
         [HttpGet]
         public async Task<IEnumerable<UserDto>> Get()
         {
-            return await _userService.GetAllUserAsync();
+            return await _userService.GetAllAsync();
         }
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
             try
             {
-                var user = await _userService.GetByIdUserAsync(id);
+                var user = await _userService.GetByIdAsync(id);
                 return Ok(user);
             }
             catch (ArgumentException ex)
@@ -39,20 +39,20 @@ namespace ExtraHours.Api.Controllers
         }
 
         [HttpPost]
-        public async Task Post([FromBody] UserDto user)
+        public async Task<UserDto> Post([FromBody] UserDto user)
         {
-            await _userService.CreateUserAsync(user);
+           return await _userService.CreateAsync(user);
         }
 
         [HttpPut]
         public async Task Put([FromBody] UserDto user)
         {
-            await _userService.UpdateUserAsync(user, user.Id);
+            await _userService.UpdateAsync(user, user.Id);
         }
         [HttpDelete("{id}")]
         public async Task Delete(int id)
         {
-            await _userService.DeleteUserAsync(id);
+            await _userService.DeleteAsync(id);
         }
     }
 }

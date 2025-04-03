@@ -8,10 +8,10 @@ namespace ExtraHours.Core.Interfeces.IServices
 {
     public interface IService<T> where T : class
     {
-        Task<IEnumerable<T>> GetAllUserAsync();
-        Task<T> GetByIdUserAsync(int id);
-        Task CreateUserAsync(T entity);
-        Task UpdateUserAsync(T entity, int id);
-        Task DeleteUserAsync(int id);
+        Task<IEnumerable<T>> GetAllAsync();
+        Task<T> GetByIdAsync(int id);
+        Task<T> CreateAsync(T entity);
+        Task UpdateAsync(T entity, int id);
+        Task DeleteAsync(int id);
     }
 }

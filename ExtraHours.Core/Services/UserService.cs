@@ -18,7 +18,7 @@ namespace ExtraHours.Core.Services
             _userRepository = userRepository;
         }
 
-        public async Task CreateUserAsync(UserDto userDto)
+        public async Task<UserDto> CreateAsync(UserDto userDto)
         {
             if (userDto == null)
             {
@@ -27,20 +27,21 @@ namespace ExtraHours.Core.Services
 
             var userModel = MapDtoToModel(userDto);
             await _userRepository.Create(userModel);
+            return MapModelToDto(userModel);
         }
 
-        public async Task DeleteUserAsync(int id)
+        public async Task DeleteAsync(int id)
         {
             await _userRepository.Delete(id);
         }
 
-        public async Task<IEnumerable<UserDto>> GetAllUserAsync()
+        public async Task<IEnumerable<UserDto>> GetAllAsync()
         {
             var users = await _userRepository.GetAll();
             return users.Select(MapModelToDto);
         }
 
-        public async Task<UserDto> GetByIdUserAsync(int id)
+        public async Task<UserDto> GetByIdAsync(int id)
         {
             if (id <= 0)
             {
@@ -50,7 +51,7 @@ namespace ExtraHours.Core.Services
             return MapModelToDto(user);
         }
 
-        public async Task UpdateUserAsync(UserDto userDto, int id)
+        public async Task UpdateAsync(UserDto userDto, int id)
         {
             if (userDto == null)
             {
@@ -71,7 +72,7 @@ namespace ExtraHours.Core.Services
             {
                 Name = userDto.Name,
                 PhoneNumber = userDto.PhoneNumber,
-                Code = userDto.Code,
+               // Code = userDto.Code,
                 Password = userDto.Password,
                 Email = userDto.Email,
                 IsActive = userDto.IsActive,
@@ -86,7 +87,7 @@ namespace ExtraHours.Core.Services
             {
                 Name = user.Name,
                 PhoneNumber = user.PhoneNumber,
-                Code = user.Code,
+                //Code = user.Code,
                 Password = user.Password,
                 Email = user.Email,
                 IsActive = user.IsActive,
