@@ -3,8 +3,9 @@ using ExtraHours.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
 
-namespace ExtraHours.Core.Repositories {
-    public class UserRepository: IUserRepository 
+namespace ExtraHours.Core.Repositories
+{
+    public class UserRepository : IUserRepository
     {
         private readonly AppDbContext _context;
 
@@ -28,19 +29,36 @@ namespace ExtraHours.Core.Repositories {
             await _context.SaveChangesAsync();
         }
 
-        public async Task UpdateUserAsync(User user)
+        public async Task UpdateUserAsync(User entity)
         {
-            _context.Users.Update(user);
+            var userExist = await _context.Users
+                .FirstOrDefaultAsync(p => p.Id == entity.Id);
+
+            if (userExist == null)
+            {
+                throw new KeyNotFoundException($"El usuario con ID {entity.Id} no existe.");
+            }
+
+            userExist.Name = entity.Name;
+            userExist.Email = entity.Email;
+            userExist.PhoneNumber = entity.PhoneNumber;
+
             await _context.SaveChangesAsync();
         }
 
-         public async Task DeleteUserAsync(int id)
-         {
+        public async Task DeleteUserAsync(int id)
+        {
             var user = await _context.Users.FindAsync(id);
-            if(user != null){
+            if (user != null)
+            {
                 _context.Users.Remove(user);
                 await _context.SaveChangesAsync();
-            }  
-         }
+            }
+        }
+
+        public async Task<User?> GetByNameOrCodeAsync(string search)
+        {
+            return await _context.Users.FirstOrDefaultAsync(u => u.Name == search || u.Code == search);
+        }
     }
 }

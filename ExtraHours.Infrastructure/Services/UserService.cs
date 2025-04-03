@@ -7,7 +7,6 @@ using ExtraHours.Core.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.VisualBasic;
 
 namespace ExtraHours.Infrastructure.Services
 {
@@ -38,14 +37,8 @@ namespace ExtraHours.Infrastructure.Services
         public async Task<User> Register(User user)
         {
             user.Password = _passwordHasher.HashPassword(user, user.Password);
-            user.Code = GenerateCodigoEmpresarial();
             await _userRepository.AddUserAsync(user);
             return user;
-        }
-
-        private string GenerateCodigoEmpresarial()
-        {
-            return "EMP-" + Guid.NewGuid().ToString().Substring(0, 8).ToUpper();
         }
 
         private string GenerateJwtToken(User user)
@@ -62,6 +55,38 @@ namespace ExtraHours.Infrastructure.Services
             var token = new JwtSecurityToken(_configuration["Jwt:Issuer"], _configuration["Jwt:Audience"], claims, expires: DateTime.UtcNow.AddHours(2), signingCredentials: credentials);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+        public async Task<User> CreateUser(User user)
+        {
+            await _userRepository.AddUserAsync(user);
+            return user;
+        }
+
+        public async Task<User> GetByNameOrCodeAsync(string search)
+        {
+            var user = await _userRepository.GetByNameOrCodeAsync(search);
+            if (user == null) throw new Exception("User not found");
+            return user;
+        }
+
+        public async Task<User> GetUserByIdAsync(int id)
+        {
+            var user = await _userRepository.GetUserByIdAsync(id);
+            if (user == null) throw new Exception("User not found");
+            return user;
+        }
+
+        public async Task<User> UpdateUser(User entity)
+        {
+            var userExist = await _userRepository.GetUserByIdAsync(entity.Id);
+            if (userExist == null) throw new Exception("User not found");
+
+            userExist.Name = entity.Name;
+            userExist.Email = entity.Email;
+            userExist.PhoneNumber = entity.PhoneNumber;
+            await _userRepository.UpdateUserAsync(userExist);
+            return userExist;
         }
     }
 }
