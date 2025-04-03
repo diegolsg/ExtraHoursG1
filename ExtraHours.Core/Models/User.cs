@@ -17,6 +17,7 @@ namespace ExtraHours.Core.Models
         public Boolean IsActive { get; set; }
         public DateTime Created { get; set; } = DateTime.UtcNow;
         public DateTime Updated { get; set; } = DateTime.UtcNow;
+
         private static string GenerateCode()
         {
             Random random = new Random();

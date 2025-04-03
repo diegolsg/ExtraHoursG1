@@ -1,25 +1,3 @@
-<<<<<<< HEAD
-namespace ExtraHours.Core.Dto
-{    
-    public class ExtraHourDto
-    {
-        public int Id { get; set; }
-        public int UserId { get; set; }
-        public string Code { get; set; }
-        public DateTime Date { get; set; }
-        public int StartTime { get; set; }
-        public int EndTime { get; set; }
-        public string Status { get; set; } 
-        public DateTime Created { get; set; }
-        public DateTime Updated { get; set; }
-    }
-}
-=======
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ExtraHours.Core.Models;
 
 namespace ExtraHours.Core.dto
@@ -32,7 +10,7 @@ namespace ExtraHours.Core.dto
         public DateOnly date { get; set; }
         public TimeSpan StartTime { get; set; }
         public TimeSpan EndTime { get; set; }
-        public string Status { get; set; }
+        public string Status { get; set; } = string.Empty;
         public DateTime Created { get; set; } = DateTime.UtcNow;
         public DateTime Updated { get; set; } = DateTime.UtcNow;
 
@@ -44,7 +22,7 @@ namespace ExtraHours.Core.dto
         public ExtraHourDto(ExtraHour extraHour)
         {
             Id = extraHour.Id;
-            userId = extraHour.userId;
+            userId = extraHour.UserId; 
             users = extraHour.users;
             date = extraHour.date;
             StartTime = extraHour.StartTime;
@@ -55,4 +33,3 @@ namespace ExtraHours.Core.dto
         }
     }
 }
->>>>>>> origin/diego
