@@ -56,7 +56,7 @@ namespace ExtraHours.API.Controllers
         }
 
         [HttpPut("{id}")]
-        
+
         public async Task<IActionResult> UpdateUser([FromBody] User entity)
         {
             var user = await _userService.GetUserByIdAsync(entity.Id);
@@ -72,6 +72,17 @@ namespace ExtraHours.API.Controllers
             if (user == null) return NotFound();
             await _userService.DeleteUser(id);
             return NoContent();
+        }
+
+        [HttpGet("code")]
+        public async Task<IActionResult> GetUserByCode([FromQuery] string code)
+        {
+            var user = await _userService.GetByCodeAsync(code);
+            if (user == null)
+            {
+                return NotFound($"No se encontró un usuario con el código {code}");
+            }
+            return Ok(new { userId = user.Id, name = user.Name });
         }
     }
 }

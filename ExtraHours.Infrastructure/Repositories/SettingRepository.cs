@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ExtraHours.Core.Interfeces.IRepositoties;
-using ExtraHours.Core.Models;
+﻿using ExtraHours.Core.Models;
+using ExtraHours.Core.Repositories;
 using ExtraHours.Infrastructure.Data;
 
 namespace ExtraHours.Infrastructure.Repositories
 {
-    public class SettingRepository:IRepository<Setting>
+    public class SettingRepository: ISettingRepository
     {
         readonly AppDbContext _context;
         public SettingRepository(AppDbContext context)
@@ -17,28 +12,32 @@ namespace ExtraHours.Infrastructure.Repositories
             _context = context;
         }
 
-        public Task<Setting> Create(Setting entity)
+        public Task AddAsync(Setting entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task Delete(int id)
+        public Task DeleteAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Setting>> GetAll()
+        public Task<IEnumerable<Setting>> GetAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task<Setting?> GetById(int id)
+        public Task<Setting> GetByIdAsync(int id)
         {
             var setting = _context.Settings.Find(id);
+            if (setting == null)
+            {
+                throw new KeyNotFoundException($"Setting with ID {id} not found");
+            }
             return Task.FromResult(setting);
         }
 
-        public Task Update(Setting entity)
+        public Task UpdateAsync(Setting entity)
         {
             throw new NotImplementedException();
         }

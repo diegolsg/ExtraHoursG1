@@ -1,4 +1,3 @@
-using Azure;
 using ExtraHours.Core.Dto;
 using ExtraHours.Core.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -14,5 +13,21 @@ namespace ExtraHours.Api.Controllers
         {
             _extraHourService = extraHourService;
         }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateExtraHour([FromBody] ExtraHourDto extraHourDto)
+        {
+            await _extraHourService.AddAsync(extraHourDto);
+            return Ok(extraHourDto);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllExtraHours()
+        {
+            var result = await _extraHourService.GetAllAsync();
+            return Ok(result);
+        }
+
     }
+
 }

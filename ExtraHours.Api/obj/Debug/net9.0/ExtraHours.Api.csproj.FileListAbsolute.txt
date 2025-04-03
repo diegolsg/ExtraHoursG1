@@ -519,3 +519,6 @@ C:\Users\USER\source\repos\ExtraHoursG1\ExtraHours.Api\bin\Debug\net9.0\Microsof
 C:\Users\USER\source\repos\ExtraHoursG1\ExtraHours.Api\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\USER\source\repos\ExtraHoursG1\ExtraHours.Api\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\USER\source\repos\ExtraHoursG1\ExtraHours.Api\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\USER\source\repos\ExtraHoursG1\ExtraHours.Api\bin\Debug\net9.0\Nager.Date.dll
+C:\Users\USER\source\repos\ExtraHoursG1\ExtraHours.Api\bin\Debug\net9.0\Nager.Holiday.dll
+C:\Users\USER\source\repos\ExtraHoursG1\ExtraHours.Api\bin\Debug\net9.0\Nager.LicenseSystem.dll

@@ -14,7 +14,6 @@ namespace ExtraHours.Core.Models
         public int RoleId { get; set; }
 
         // public required Role Roles { get; set; }
-        public Boolean IsActive { get; set; }
         public DateTime Created { get; set; } = DateTime.UtcNow;
         public DateTime Updated { get; set; } = DateTime.UtcNow;
 

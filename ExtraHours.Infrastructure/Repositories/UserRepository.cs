@@ -60,5 +60,10 @@ namespace ExtraHours.Core.Repositories
         {
             return await _context.Users.FirstOrDefaultAsync(u => u.Name == search || u.Code == search);
         }
+
+        public async Task<User?> GetByCodeAsync(string code)
+        {
+            return await _context.Users.FirstOrDefaultAsync(u => u.Code == code);
+        }
     }
 }

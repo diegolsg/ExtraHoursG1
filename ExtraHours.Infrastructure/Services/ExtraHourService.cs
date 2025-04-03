@@ -14,9 +14,24 @@ namespace ExtraHours.Infrastructure.Services
             _repository = repository;
         }
 
-        public async Task<IEnumerable<ExtraHour>> GetAllAsync()
+        public async Task<IEnumerable<ExtraHourDto>> GetAllAsync()
         {
-            return await _repository.GetAllAsync();
+            var extraHours = await _repository.GetAllAsync();
+
+            return extraHours.Select(eh => new ExtraHourDto
+            {
+                Id = eh.Id,
+                UserId = eh.UserId,
+                Name = eh.Users?.Name ?? "Usuario no encontrado",
+                Code = eh.Users?.Code ?? "Sin código",
+                Date = eh.Date,
+                StartTime = eh.StartTime,
+                EndTime = eh.EndTime,
+                Status = eh.Status,
+                Created = eh.Created,
+                Updated = eh.Updated,
+                ExtraHoursTypeId = eh.ExtraHoursTypeId
+            }).ToList();
         }
 
         public async Task<ExtraHour> GetByIdAsync(int id)
@@ -29,10 +44,11 @@ namespace ExtraHours.Infrastructure.Services
             var extraHour = new ExtraHour
             {
                 UserId = extraHourDto.UserId,
-                Code = extraHourDto.Code,
                 Date = extraHourDto.Date,
                 StartTime = extraHourDto.StartTime,
-                EndTime = extraHourDto.EndTime, 
+                EndTime = extraHourDto.EndTime,
+                Status = extraHourDto.Status,
+                ExtraHoursTypeId = extraHourDto.ExtraHoursTypeId,
             };
 
             await _repository.AddAsync(extraHour);

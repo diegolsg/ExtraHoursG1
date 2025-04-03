@@ -95,5 +95,12 @@ namespace ExtraHours.Infrastructure.Services
             if (user == null) throw new Exception("User not found");
             await _userRepository.DeleteUserAsync(id);
         }
+
+        public async Task<User> GetByCodeAsync(string code)
+        {
+            var user = await _userRepository.GetByCodeAsync(code);
+            if (user == null) throw new Exception("User not found");
+            return user;
+        }
     }
 }

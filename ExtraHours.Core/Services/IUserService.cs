@@ -9,6 +9,7 @@ namespace ExtraHours.Core.Services
         Task<IEnumerable<User>> GetUsers();
         Task<User> GetUserByIdAsync(int id);
         Task<User> GetByNameOrCodeAsync(string search);
+        Task<User> GetByCodeAsync(string code);
         Task<User> CreateUser(User user);
         Task<User> UpdateUser(User entity);
         Task DeleteUser(int id);

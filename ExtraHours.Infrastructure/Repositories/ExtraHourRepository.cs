@@ -1,6 +1,7 @@
 ﻿using ExtraHours.Core.Models;
 using ExtraHours.Core.Repositories;
 using ExtraHours.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace ExtraHours.Infrastructure.Repositories
 {
@@ -27,7 +28,9 @@ namespace ExtraHours.Infrastructure.Repositories
 
         public async Task<IEnumerable<ExtraHour>> GetAllAsync()
         {
-            return await Task.FromResult(_context.ExtraHours.ToList());
+            return await _context.ExtraHours
+                .Include(eh => eh.Users)
+                .ToListAsync();
         }
 
         public async Task<ExtraHour> GetByIdAsync(int id)
@@ -44,7 +47,5 @@ namespace ExtraHours.Infrastructure.Repositories
         {
             throw new NotImplementedException();
         }
-
-
     }
 }

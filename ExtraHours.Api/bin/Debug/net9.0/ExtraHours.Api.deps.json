@@ -15,15 +15,12 @@
           "Microsoft.EntityFrameworkCore": "9.0.3",
           "Microsoft.EntityFrameworkCore.Design": "9.0.3",
           "Microsoft.EntityFrameworkCore.SqlServer": "9.0.3",
-<<<<<<< HEAD
+          "Nager.Date": "2.8.2",
+          "Nager.Holiday": "1.0.1",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.4",
           "Swashbuckle.AspNetCore": "8.1.0",
           "Swashbuckle.AspNetCore.SwaggerGen": "8.1.0",
           "Swashbuckle.AspNetCore.SwaggerUI": "8.1.0"
-=======
-          "Nager.Date": "2.8.2",
-          "Nager.Holiday": "1.0.1"
->>>>>>> origin/diego
         },
         "runtime": {
           "ExtraHours.Api.dll": {}
