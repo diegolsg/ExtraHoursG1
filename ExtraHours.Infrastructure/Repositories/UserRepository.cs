@@ -1,43 +1,69 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ExtraHours.Core.Models;
-using ExtraHours.Core.Interfeces.IRepositoties;
+﻿﻿using ExtraHours.Core.Models;
 using ExtraHours.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 
-namespace ExtraHours.Infrastructure.Repositories
+namespace ExtraHours.Core.Repositories
 {
-    public class UserRepository : IRepository<User>
+    public class UserRepository : IUserRepository
     {
-        readonly AppDbContex _context;
-        public UserRepository(AppDbContex context)
+        private readonly AppDbContext _context;
+
+        public UserRepository(AppDbContext context)
         {
             _context = context;
         }
 
-        public async Task<IEnumerable<User>> GetAll()
+        public async Task<IEnumerable<User>> GetAllUsersAsync() => await _context.Users.ToListAsync();
+
+        public async Task<User?> GetUserByIdAsync(int id) => await _context.Users.FindAsync(id);
+
+        public async Task<User?> GetByEmailAsync(string email)
         {
-            return await Task.FromResult(_context.Users.ToList());
+            return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
         }
-        public Task<User> GetById(int id)
+
+        public async Task AddUserAsync(User user)
         {
-            var user = _context.Users.FirstOrDefault(x => x.Id == id);
-            return Task.FromResult(user);
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
         }
-        public Task Create(User entity)
+
+        public async Task UpdateUserAsync(User entity)
         {
-            throw new NotImplementedException();
+            var userExist = await _context.Users
+                .FirstOrDefaultAsync(p => p.Id == entity.Id);
+
+            if (userExist == null)
+            {
+                throw new KeyNotFoundException($"El usuario con ID {entity.Id} no existe.");
+            }
+
+            userExist.Name = entity.Name;
+            userExist.Email = entity.Email;
+            userExist.PhoneNumber = entity.PhoneNumber;
+
+            await _context.SaveChangesAsync();
         }
-        public Task Update(User entity)
+
+        public async Task DeleteUserAsync(int id)
         {
-            throw new NotImplementedException();
+            var user = await _context.Users.FindAsync(id);
+            if (user != null)
+            {
+                _context.Users.Remove(user);
+                await _context.SaveChangesAsync();
+            }
         }
-        public Task Delete(int id)
+
+        public async Task<User?> GetByNameOrCodeAsync(string search)
         {
-            throw new NotImplementedException();
+            return await _context.Users.FirstOrDefaultAsync(u => u.Name == search || u.Code == search);
+        }
+
+        public async Task<User?> GetByCodeAsync(string code)
+        {
+            return await _context.Users.FirstOrDefaultAsync(u => u.Code == code);
         }
     }
 }
