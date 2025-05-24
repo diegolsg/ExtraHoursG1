@@ -1,4 +1,4 @@
-using ExtraHours.Core.Dto;
+using ExtraHours.Core.dto;
 using ExtraHours.Core.Services;
 using Microsoft.AspNetCore.Mvc;
 
