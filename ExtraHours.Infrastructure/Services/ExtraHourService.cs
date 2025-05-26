@@ -30,7 +30,8 @@ namespace ExtraHours.Infrastructure.Services
                 Status = eh.Status,
                 Created = eh.Created,
                 Updated = eh.Updated,
-                //ExtraHoursTypeId = eh.ExtraHoursTypeId
+                ExtraHoursTypeId = eh.ExtraHoursTypeId,
+                ExtraHoursType = eh.ExtraHoursType
             }).ToList();
         }
 
@@ -48,7 +49,7 @@ namespace ExtraHours.Infrastructure.Services
                 StartTime = extraHourDto.StartTime,
                 EndTime = extraHourDto.EndTime,
                 Status = extraHourDto.Status,
-                //ExtraHoursTypeId = extraHourDto.ExtraHoursTypeId,
+                ExtraHoursTypeId = extraHourDto.ExtraHoursTypeId,
             };
 
             await _repository.AddAsync(extraHour);

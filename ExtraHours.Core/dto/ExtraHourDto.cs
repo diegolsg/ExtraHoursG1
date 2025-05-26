@@ -6,7 +6,7 @@ namespace ExtraHours.Core.dto
     {
         public int Id { get; set; }
         public int UserId { get; set; }
-        public User Users { get; set; } = null!;
+        public User? Users { get; set; }
         public string Name { get; set; }
         public string Code { get; set; }
         public string Date { get; set; }
@@ -15,10 +15,8 @@ namespace ExtraHours.Core.dto
         public string Status { get; set; } = string.Empty;
         public DateTime Created { get; set; } = DateTime.UtcNow;
         public DateTime Updated { get; set; } = DateTime.UtcNow;
-
-        //nuevas
-        //public int ExtraHoursTypeId { get; set; }
-        //public required ExtraHourType ExtraHoursType { get; set; }
+        public int ExtraHoursTypeId { get; set; }
+        public ExtraHourType? ExtraHoursType { get; set; }
 
         public ExtraHourDto() { }
         public ExtraHourDto(ExtraHour extraHour)
