@@ -1,4 +1,4 @@
-namespace ExtraHours.Core.Dto
+namespace ExtraHours.Core.dto
 {
     public class ExtraHourTypeDto
     {

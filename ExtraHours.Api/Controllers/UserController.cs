@@ -1,20 +1,21 @@
-﻿using ExtraHours.Core.Dto;
-using ExtraHours.Core.Models;
+﻿using ExtraHours.Core.Models;
+using ExtraHours.Core.dto;
 using ExtraHours.Core.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ExtraHours.API.Controllers
+namespace ExtraHours.Api.Controllers
 {
     [Route("api/users")]
     [ApiController]
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
-
-        public UserController(IUserService userService)
+        private readonly EmailService _emailService;
+        public UserController(IUserService userService, EmailService emailService)
         {
             _userService = userService;
+            _emailService = emailService;
         }
 
         [AllowAnonymous]
@@ -33,8 +34,19 @@ namespace ExtraHours.API.Controllers
         }
 
         [HttpPost("userCreate")]
-        public async Task<IActionResult> CreateUser([FromBody] User user)
+        public async Task<IActionResult> CreateUser([FromBody] UserDto userDto)
         {
+            var user = new User
+            {
+                Name = userDto.Name,
+                PhoneNumber = userDto.PhoneNumber,
+                Email = userDto.Email,
+                RoleId = 2, 
+                Password = "" 
+            };
+
+            await _emailService.SendCodeForEmailAsync(user.Email, user.Name, user.Code);
+
             await _userService.CreateUser(user);
             return Ok(user);
         }
