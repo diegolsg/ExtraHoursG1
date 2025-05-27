@@ -7,16 +7,16 @@ namespace ExtraHours.Infrastructure.Services
 {
     public class ExtraHourService : IExtraHourService
     {
-        private readonly IExtraHourRepository _repository;
+        private readonly IExtraHourRepository _extraHourRepository;
 
-        public ExtraHourService(IExtraHourRepository repository)
+        public ExtraHourService(IExtraHourRepository extraHourRepository)
         {
-            _repository = repository;
+            _extraHourRepository = extraHourRepository;
         }
 
         public async Task<IEnumerable<ExtraHourDto>> GetAllAsync()
         {
-            var extraHours = await _repository.GetAllAsync();
+            var extraHours = await _extraHourRepository.GetAllAsync();
 
             return extraHours.Select(eh => new ExtraHourDto
             {
@@ -30,13 +30,16 @@ namespace ExtraHours.Infrastructure.Services
                 Status = eh.Status,
                 Created = eh.Created,
                 Updated = eh.Updated,
-                //ExtraHoursTypeId = eh.ExtraHoursTypeId
+                ExtraHoursTypeId = eh.ExtraHoursTypeId,
+                ExtraHoursType = eh.ExtraHoursType
             }).ToList();
         }
 
         public async Task<ExtraHour> GetByIdAsync(int id)
         {
-            return await _repository.GetByIdAsync(id);
+            var extraHour = await _extraHourRepository.GetByIdAsync(id);
+            if (extraHour == null) throw new Exception("Extra Hour not found");
+            return extraHour;
         }
 
         public async Task AddAsync(ExtraHourDto extraHourDto)
@@ -48,28 +51,37 @@ namespace ExtraHours.Infrastructure.Services
                 StartTime = extraHourDto.StartTime,
                 EndTime = extraHourDto.EndTime,
                 Status = extraHourDto.Status,
-                //ExtraHoursTypeId = extraHourDto.ExtraHoursTypeId,
+                ExtraHoursTypeId = extraHourDto.ExtraHoursTypeId,
             };
 
-            await _repository.AddAsync(extraHour);
+            await _extraHourRepository.AddAsync(extraHour);
         }
 
         public async Task UpdateAsync(int id, ExtraHourDto extraHourDto)
         {
-            var extraHour = await _repository.GetByIdAsync(id);
+            var extraHour = await _extraHourRepository.GetByIdAsync(id);
             if (extraHour != null)
             {
                 extraHour.Date = extraHourDto.Date;
                 extraHour.StartTime = extraHourDto.StartTime;
                 extraHour.EndTime = extraHourDto.EndTime;
 
-                await _repository.UpdateAsync(extraHour);
+                await _extraHourRepository.UpdateAsync(extraHour);
             }
         }
 
         public async Task DeleteAsync(int id)
         {
-            await _repository.DeleteAsync(id);
+            await _extraHourRepository.DeleteAsync(id);
+        }
+
+        public async Task HourStatus(int id, string status)
+        {
+            var extraHour = await _extraHourRepository.GetByIdAsync(id);
+            if (extraHour == null) throw new Exception("Extra Hour not found");
+
+            extraHour.Status = status;
+            await _extraHourRepository.HourStatus(id, status);
         }
     }
 }

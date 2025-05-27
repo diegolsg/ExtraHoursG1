@@ -10,5 +10,6 @@ namespace ExtraHours.Core.Services
         Task AddAsync(ExtraHourDto extraHourDto);
         Task UpdateAsync(int id, ExtraHourDto extraHourDto);
         Task DeleteAsync(int id);
+        Task HourStatus(int id, string status);
     }
 }
