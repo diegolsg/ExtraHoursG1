@@ -1,5 +1,5 @@
 using ExtraHours.Core.Models;
-using ExtraHours.Core.Dto;
+using ExtraHours.Core.dto;
 
 namespace ExtraHours.Core.Services
 {
@@ -10,5 +10,6 @@ namespace ExtraHours.Core.Services
         Task AddAsync(ExtraHourDto extraHourDto);
         Task UpdateAsync(int id, ExtraHourDto extraHourDto);
         Task DeleteAsync(int id);
+        Task HourStatus(int id, string status);
     }
 }

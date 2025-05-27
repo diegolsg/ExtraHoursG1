@@ -9,5 +9,6 @@ namespace ExtraHours.Core.Repositories
         Task AddAsync(ExtraHour extraHour);
         Task UpdateAsync(ExtraHour extraHour);
         Task DeleteAsync(int id);
+        Task HourStatus (int id, string status);
     }
 }

@@ -59,6 +59,9 @@ namespace ExtraHours.Infrastructure.Services
 
         public async Task<User> CreateUser(User user)
         {
+            user.RoleId = 2;
+            user.Password = "";
+
             await _userRepository.AddUserAsync(user);
             return user;
         }

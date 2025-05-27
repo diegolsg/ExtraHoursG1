@@ -14,7 +14,12 @@ namespace ExtraHours.Core.Repositories
             _context = context;
         }
 
-        public async Task<IEnumerable<User>> GetAllUsersAsync() => await _context.Users.ToListAsync();
+        public async Task<IEnumerable<User>> GetAllUsersAsync()
+        {
+            return await _context.Users
+                .Where(u => u.RoleId == 2)
+                .ToListAsync();
+        }
 
         public async Task<User?> GetUserByIdAsync(int id) => await _context.Users.FindAsync(id);
 
@@ -25,6 +30,11 @@ namespace ExtraHours.Core.Repositories
 
         public async Task AddUserAsync(User user)
         {
+            if (user.RoleId == 0)
+                user.RoleId = 2;
+
+            user.Password = "";
+
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
         }

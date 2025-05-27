@@ -522,3 +522,6 @@ C:\Users\USER\source\repos\ExtraHoursG1\ExtraHours.Api\bin\Debug\net9.0\Swashbuc
 C:\Users\USER\source\repos\ExtraHoursG1\ExtraHours.Api\bin\Debug\net9.0\Nager.Date.dll
 C:\Users\USER\source\repos\ExtraHoursG1\ExtraHours.Api\bin\Debug\net9.0\Nager.Holiday.dll
 C:\Users\USER\source\repos\ExtraHoursG1\ExtraHours.Api\bin\Debug\net9.0\Nager.LicenseSystem.dll
+C:\Users\USER\source\repos\ExtraHoursG1\ExtraHours.Api\bin\Debug\net9.0\BouncyCastle.Cryptography.dll
+C:\Users\USER\source\repos\ExtraHoursG1\ExtraHours.Api\bin\Debug\net9.0\MailKit.dll
+C:\Users\USER\source\repos\ExtraHoursG1\ExtraHours.Api\bin\Debug\net9.0\MimeKit.dll

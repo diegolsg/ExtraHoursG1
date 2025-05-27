@@ -63,6 +63,9 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IExtraHourService, ExtraHourService>();
 builder.Services.AddScoped<IExtraHourRepository, ExtraHourRepository>();
+builder.Services.AddScoped<IRoleService, RoleService>();
+builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+builder.Services.AddScoped<EmailService>();
 
 builder.Services.AddControllers();
 builder.Services.AddAuthorization();
