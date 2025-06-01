@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ExtraHours.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class Inicial : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,8 +18,12 @@ namespace ExtraHours.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "text", nullable: false),
-                    RateMultiplier = table.Column<decimal>(type: "numeric", nullable: false)
+                    TypeHourName = table.Column<string>(type: "text", nullable: false),
+                    Porcentaje = table.Column<string>(type: "text", nullable: false),
+                    StartExtraHour = table.Column<TimeSpan>(type: "interval", nullable: false),
+                    EndExtraHour = table.Column<TimeSpan>(type: "interval", nullable: false),
+                    Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Updated = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -47,9 +51,7 @@ namespace ExtraHours.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "text", nullable: false),
-                    Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    Updated = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    Name = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -62,8 +64,9 @@ namespace ExtraHours.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Key = table.Column<string>(type: "text", nullable: false),
-                    Value = table.Column<string>(type: "text", nullable: false),
+                    LimitExtraHoursDay = table.Column<int>(type: "integer", nullable: false),
+                    LimitExtraHoursWeek = table.Column<int>(type: "integer", nullable: false),
+                    TotalHoursWeek = table.Column<int>(type: "integer", nullable: false),
                     Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     Updated = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
@@ -84,7 +87,6 @@ namespace ExtraHours.Infrastructure.Migrations
                     Password = table.Column<string>(type: "text", nullable: false),
                     Email = table.Column<string>(type: "text", nullable: false),
                     RoleId = table.Column<int>(type: "integer", nullable: false),
-                    IsActive = table.Column<bool>(type: "boolean", nullable: false),
                     Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     Updated = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
@@ -126,17 +128,23 @@ namespace ExtraHours.Infrastructure.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     UserId = table.Column<int>(type: "integer", nullable: false),
-                    Code = table.Column<string>(type: "text", nullable: false),
-                    Date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    StartTime = table.Column<int>(type: "integer", nullable: false),
-                    EndTime = table.Column<int>(type: "integer", nullable: false),
+                    Date = table.Column<string>(type: "text", nullable: false),
+                    StartTime = table.Column<string>(type: "text", nullable: false),
+                    EndTime = table.Column<string>(type: "text", nullable: false),
                     Status = table.Column<string>(type: "text", nullable: false),
                     Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    Updated = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    Updated = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ExtraHoursTypeId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ExtraHours", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ExtraHours_ExtraHourTypes_ExtraHoursTypeId",
+                        column: x => x.ExtraHoursTypeId,
+                        principalTable: "ExtraHourTypes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_ExtraHours_Users_UserId",
                         column: x => x.UserId,
@@ -168,6 +176,11 @@ namespace ExtraHours.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_ExtraHours_ExtraHoursTypeId",
+                table: "ExtraHours",
+                column: "ExtraHoursTypeId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ExtraHours_UserId",
                 table: "ExtraHours",
                 column: "UserId");
@@ -195,9 +208,6 @@ namespace ExtraHours.Infrastructure.Migrations
                 name: "ExtraHours");
 
             migrationBuilder.DropTable(
-                name: "ExtraHourTypes");
-
-            migrationBuilder.DropTable(
                 name: "Reports");
 
             migrationBuilder.DropTable(
@@ -205,6 +215,9 @@ namespace ExtraHours.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "Settings");
+
+            migrationBuilder.DropTable(
+                name: "ExtraHourTypes");
 
             migrationBuilder.DropTable(
                 name: "Users");

@@ -12,15 +12,15 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ExtraHours.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250402211801_Inicial")]
-    partial class Inicial
+    [Migration("20250601002243_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.3")
+                .HasAnnotation("ProductVersion", "9.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -33,21 +33,23 @@ namespace ExtraHours.Infrastructure.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<DateTime>("Created")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<string>("Date")
+                        .IsRequired()
+                        .HasColumnType("text");
 
-                    b.Property<int>("EndTime")
+                    b.Property<string>("EndTime")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("ExtraHoursTypeId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("StartTime")
-                        .HasColumnType("integer");
+                    b.Property<string>("StartTime")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("Status")
                         .IsRequired()
@@ -60,6 +62,8 @@ namespace ExtraHours.Infrastructure.Migrations
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ExtraHoursTypeId");
 
                     b.HasIndex("UserId");
 
@@ -74,12 +78,25 @@ namespace ExtraHours.Infrastructure.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Name")
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<TimeSpan>("EndExtraHour")
+                        .HasColumnType("interval");
+
+                    b.Property<string>("Porcentaje")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<decimal>("RateMultiplier")
-                        .HasColumnType("numeric");
+                    b.Property<TimeSpan>("StartExtraHour")
+                        .HasColumnType("interval");
+
+                    b.Property<string>("TypeHourName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("Updated")
+                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
@@ -146,15 +163,9 @@ namespace ExtraHours.Infrastructure.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("timestamp with time zone");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<DateTime>("Updated")
-                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
@@ -195,16 +206,17 @@ namespace ExtraHours.Infrastructure.Migrations
                     b.Property<DateTime>("Created")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("Key")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("LimitExtraHoursDay")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("LimitExtraHoursWeek")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("TotalHoursWeek")
+                        .HasColumnType("integer");
 
                     b.Property<DateTime>("Updated")
                         .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("Value")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -229,9 +241,6 @@ namespace ExtraHours.Infrastructure.Migrations
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("boolean");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -258,13 +267,21 @@ namespace ExtraHours.Infrastructure.Migrations
 
             modelBuilder.Entity("ExtraHours.Core.Models.ExtraHour", b =>
                 {
-                    b.HasOne("ExtraHours.Core.Models.User", "users")
+                    b.HasOne("ExtraHours.Core.Models.ExtraHourType", "ExtraHoursType")
+                        .WithMany()
+                        .HasForeignKey("ExtraHoursTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ExtraHours.Core.Models.User", "Users")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("users");
+                    b.Navigation("ExtraHoursType");
+
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("ExtraHours.Core.Models.Report", b =>
