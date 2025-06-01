@@ -9,6 +9,7 @@ namespace ExtraHours.Core.Repositories {
         Task<User?> GetByCodeAsync(string code);
         Task<User?> GetByNameOrCodeAsync(string search);
         Task AddUserAsync(User user);
+        Task CreateUserAsync(User user);
         Task UpdateUserAsync(User entity);
         Task DeleteUserAsync(int id);
     }

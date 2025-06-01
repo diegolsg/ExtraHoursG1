@@ -30,6 +30,12 @@ namespace ExtraHours.Core.Repositories
 
         public async Task AddUserAsync(User user)
         {
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
+        }
+        
+        public async Task CreateUserAsync(User user)
+        {
             if (user.RoleId == 0)
                 user.RoleId = 2;
 

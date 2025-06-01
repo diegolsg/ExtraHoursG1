@@ -62,7 +62,7 @@ namespace ExtraHours.Infrastructure.Services
             user.RoleId = 2;
             user.Password = "";
 
-            await _userRepository.AddUserAsync(user);
+            await _userRepository.CreateUserAsync(user);
             return user;
         }
 
