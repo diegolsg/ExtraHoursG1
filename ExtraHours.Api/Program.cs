@@ -66,6 +66,10 @@ builder.Services.AddScoped<IExtraHourRepository, ExtraHourRepository>();
 builder.Services.AddScoped<IRoleService, RoleService>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 builder.Services.AddScoped<EmailService>();
+builder.Services.AddScoped<IExtraHourTypeService, ExtraHourTypeService>();
+builder.Services.AddScoped<IExtraHourTypeRepository, ExtraHourTypeRepository>();
+builder.Services.AddScoped<ISettingRepository, SettingRepository>();
+builder.Services.AddScoped<ISettingService, SettingService>();
 
 builder.Services.AddControllers();
 builder.Services.AddAuthorization();

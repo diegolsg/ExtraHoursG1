@@ -1,6 +1,7 @@
 ﻿using ExtraHours.Core.Models;
 using ExtraHours.Core.Repositories;
 using ExtraHours.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace ExtraHours.Infrastructure.Repositories
 {
@@ -12,34 +13,32 @@ namespace ExtraHours.Infrastructure.Repositories
             _context = context;
         }
 
-        public Task AddAsync(Setting entity)
+        public async Task AddAsync(Setting entity)
         {
-            throw new NotImplementedException();
+            await _context.Settings.AddAsync(entity);
+            await _context.SaveChangesAsync();
         }
 
-        public Task DeleteAsync(int id)
+        public async Task<IEnumerable<Setting>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await _context.Settings
+                .ToListAsync();
         }
 
-        public Task<IEnumerable<Setting>> GetAllAsync()
+        public async Task<Setting> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<Setting> GetByIdAsync(int id)
-        {
-            var setting = _context.Settings.Find(id);
+            var setting = await _context.Settings.FindAsync(id);
             if (setting == null)
             {
-                throw new KeyNotFoundException($"Setting with ID {id} not found");
+                throw new KeyNotFoundException($"ExtraHour with ID {id} not found");
             }
-            return Task.FromResult(setting);
+            return setting;
         }
 
         public Task UpdateAsync(Setting entity)
         {
-            throw new NotImplementedException();
+            _context.Settings.Update(entity);
+            return _context.SaveChangesAsync();
         }
     }
 }

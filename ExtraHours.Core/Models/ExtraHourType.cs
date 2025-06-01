@@ -6,7 +6,7 @@ namespace ExtraHours.Core.Models {
         public required string Porcentaje { get; set; }
         public TimeSpan StartExtraHour { get; set; }
         public TimeSpan EndExtraHour { get; set; }
-        public DateTime Created { get; set; } = DateTime.Now;
-        public DateTime Updated { get; set; } = DateTime.Now;
+        public DateTime Created { get; set; } = DateTime.UtcNow;
+        public DateTime Updated { get; set; } = DateTime.UtcNow;
     }
 }
