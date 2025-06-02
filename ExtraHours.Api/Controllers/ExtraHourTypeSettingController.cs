@@ -17,24 +17,47 @@ namespace ExtraHours.Api.Controllers
             _extraHourTypeService = extraHourTypeService;
         }
 
+        [HttpGet("get-settings")]
+        public async Task<IActionResult> GetAllSettings()
+        {
+            var settings = await _settingService.GetAllAsync();
+            var extraHourTypes = await _extraHourTypeService.GetAllAsync();
+
+            return Ok(new
+            {
+                setting = settings,
+                extraHourType = extraHourTypes,
+                extraHourTypeSelected = extraHourTypes.Select(t => new
+                {
+                    t.TypeHourName,
+                })
+            });
+        }
+
         [HttpPut("update-settings")]
-        public IActionResult UpdateAllSettings([FromBody] ExtraHourSettingsDto settings)
+        public async Task<IActionResult> UpdateAllSettings([FromBody] ExtraHourSettingsDto extraHourSettingsDto)
         {
             try
             {
-                _settingService.UpdateAsync(settings.Setting);
+                await _settingService.UpdateAsync(extraHourSettingsDto.Setting);
 
-                foreach (var TypeHourName in settings.ExtraHourTypes)
+                foreach (var typeHourName in extraHourSettingsDto.ExtraHourTypes)
                 {
-                    _extraHourTypeService.UpdateAsync(TypeHourName.Id.ToString(), TypeHourName);
+                    await _extraHourTypeService.UpdateAsync(typeHourName.Id.ToString(), typeHourName);
                 }
 
-                return Ok(new { mensaje = "Configuraciones actualizadas correctamente." });
+                return Ok(new
+                {
+                    message = "Configuraciones actualizadas correctamente",
+                    settings = extraHourSettingsDto.Setting,
+                    extraHourTypes = extraHourSettingsDto.ExtraHourTypes
+                });
             }
             catch (Exception ex)
             {
                 return StatusCode(500, $"Error al actualizar configuraciones: {ex.Message}");
             }
         }
+
     }
 }
