@@ -41,9 +41,9 @@ namespace ExtraHours.Api.Controllers
             {
                 await _settingService.UpdateAsync(extraHourSettingsDto.Setting);
 
-                foreach (var typeHourName in extraHourSettingsDto.ExtraHourTypes)
+                foreach (var extraHourType in extraHourSettingsDto.ExtraHourTypes)
                 {
-                    await _extraHourTypeService.UpdateAsync(typeHourName.Id.ToString(), typeHourName);
+                    await _extraHourTypeService.UpdateAsync(extraHourType.TypeHourName, extraHourType);
                 }
 
                 return Ok(new
