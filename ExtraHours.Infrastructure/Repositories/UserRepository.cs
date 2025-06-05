@@ -33,7 +33,7 @@ namespace ExtraHours.Core.Repositories
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
         }
-        
+
         public async Task CreateUserAsync(User user)
         {
             if (user.RoleId == 0)
@@ -74,7 +74,10 @@ namespace ExtraHours.Core.Repositories
 
         public async Task<User?> GetByNameOrCodeAsync(string search)
         {
-            return await _context.Users.FirstOrDefaultAsync(u => u.Name == search || u.Code == search);
+            return await _context.Users
+            .FirstOrDefaultAsync(u =>
+            u.Name.ToLower().Contains(search.ToLower()) ||
+            u.Code.ToLower().Contains(search.ToLower()));
         }
 
         public async Task<User?> GetByCodeAsync(string code)
