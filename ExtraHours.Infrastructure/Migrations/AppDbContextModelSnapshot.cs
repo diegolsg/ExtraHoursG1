@@ -254,6 +254,10 @@ namespace ExtraHours.Infrastructure.Migrations
                     b.Property<int>("RoleId")
                         .HasColumnType("integer");
 
+                    b.Property<string>("Salary")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<DateTime>("Updated")
                         .HasColumnType("timestamp with time zone");
 

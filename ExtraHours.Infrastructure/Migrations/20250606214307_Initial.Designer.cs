@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ExtraHours.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250601002243_Initial")]
+    [Migration("20250606214307_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -256,6 +256,10 @@ namespace ExtraHours.Infrastructure.Migrations
 
                     b.Property<int>("RoleId")
                         .HasColumnType("integer");
+
+                    b.Property<string>("Salary")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<DateTime>("Updated")
                         .HasColumnType("timestamp with time zone");

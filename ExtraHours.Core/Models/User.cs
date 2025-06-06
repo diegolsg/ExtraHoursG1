@@ -11,6 +11,7 @@ namespace ExtraHours.Core.Models
         public string Code { get; set; } = GenerateCode();
         public required string Password { get; set; }
         public required string Email { get; set; }
+        public string Salary { get; set; }
         public int RoleId { get; set; }
 
         // public required Role Roles { get; set; }

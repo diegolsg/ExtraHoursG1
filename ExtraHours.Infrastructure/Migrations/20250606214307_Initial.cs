@@ -86,6 +86,7 @@ namespace ExtraHours.Infrastructure.Migrations
                     Code = table.Column<string>(type: "text", nullable: false),
                     Password = table.Column<string>(type: "text", nullable: false),
                     Email = table.Column<string>(type: "text", nullable: false),
+                    Salary = table.Column<string>(type: "text", nullable: false),
                     RoleId = table.Column<int>(type: "integer", nullable: false),
                     Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     Updated = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)

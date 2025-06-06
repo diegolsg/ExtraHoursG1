@@ -88,6 +88,7 @@ namespace ExtraHours.Infrastructure.Services
             userExist.Name = entity.Name;
             userExist.Email = entity.Email;
             userExist.PhoneNumber = entity.PhoneNumber;
+            userExist.Salary = entity.Salary;
             await _userRepository.UpdateUserAsync(userExist);
             return userExist;
         }
