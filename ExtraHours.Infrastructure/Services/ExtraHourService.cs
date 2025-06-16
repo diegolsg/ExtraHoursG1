@@ -8,7 +8,6 @@ namespace ExtraHours.Infrastructure.Services
     public class ExtraHourService : IExtraHourService
     {
         private readonly IExtraHourRepository _extraHourRepository;
-
         public ExtraHourService(IExtraHourRepository extraHourRepository)
         {
             _extraHourRepository = extraHourRepository;

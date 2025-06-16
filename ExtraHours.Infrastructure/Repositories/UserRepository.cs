@@ -2,7 +2,6 @@
 using ExtraHours.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
-
 namespace ExtraHours.Core.Repositories
 {
     public class UserRepository : IUserRepository
@@ -72,12 +71,13 @@ namespace ExtraHours.Core.Repositories
             }
         }
 
-        public async Task<User?> GetByNameOrCodeAsync(string search)
+        public async Task<List<User>> GetByNameOrCodeAsync(string search)
         {
             return await _context.Users
-            .FirstOrDefaultAsync(u =>
-            u.Name.ToLower().Contains(search.ToLower()) ||
-            u.Code.ToLower().Contains(search.ToLower()));
+                .Where(u =>
+                    u.Name.ToLower().Contains(search.ToLower()) ||
+                    u.Code.ToLower().Contains(search.ToLower()))
+                .ToListAsync();
         }
 
         public async Task<User?> GetByCodeAsync(string code)

@@ -16,7 +16,7 @@
           "Microsoft.EntityFrameworkCore": "9.0.5",
           "Microsoft.EntityFrameworkCore.Design": "9.0.3",
           "Microsoft.EntityFrameworkCore.SqlServer": "9.0.3",
-          "Nager.Date": "2.8.2",
+          "Nager.Date": "2.9.0",
           "Nager.Holiday": "1.0.1",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.4",
           "Swashbuckle.AspNetCore": "8.1.0",
@@ -799,14 +799,14 @@
           }
         }
       },
-      "Nager.Date/2.8.2": {
+      "Nager.Date/2.9.0": {
         "dependencies": {
           "Nager.LicenseSystem": "1.1.0"
         },
         "runtime": {
           "lib/net8.0/Nager.Date.dll": {
-            "assemblyVersion": "2.8.2.0",
-            "fileVersion": "2.8.2.0"
+            "assemblyVersion": "2.9.0.0",
+            "fileVersion": "2.9.0.0"
           }
         }
       },
@@ -1153,7 +1153,7 @@
         "dependencies": {
           "Microsoft.AspNetCore.OpenApi": "9.0.1",
           "Microsoft.EntityFrameworkCore": "9.0.5",
-          "Nager.Date": "2.8.2",
+          "Nager.Date": "2.9.0",
           "Nager.Holiday": "1.0.1",
           "Npgsql": "9.0.3",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.4"
@@ -1170,7 +1170,7 @@
           "ExtraHours.Core": "1.0.0",
           "MailKit": "4.12.1",
           "Microsoft.EntityFrameworkCore": "9.0.5",
-          "Nager.Date": "2.8.2",
+          "Nager.Date": "2.9.0",
           "Nager.Holiday": "1.0.1",
           "Npgsql": "9.0.3",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.4",
@@ -1527,12 +1527,12 @@
       "path": "mono.texttemplating/3.0.0",
       "hashPath": "mono.texttemplating.3.0.0.nupkg.sha512"
     },
-    "Nager.Date/2.8.2": {
+    "Nager.Date/2.9.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-YiV8VQ0I/NN2ndxR5SHkzegcbxO7LkdcPjduYiWr/6JvAIS4slvsFo1gt7ckaEbRgozeBVf4jK6ZrZvwsVXN2w==",
-      "path": "nager.date/2.8.2",
-      "hashPath": "nager.date.2.8.2.nupkg.sha512"
+      "sha512": "sha512-QH+sdIkHbQmTRct886DsIBbEZSlXB2ogSMsXxybURLhomWZxXfkjjtkD1a3it944ei7OlNyOaIk5G5kLSJvCvQ==",
+      "path": "nager.date/2.9.0",
+      "hashPath": "nager.date.2.9.0.nupkg.sha512"
     },
     "Nager.Holiday/1.0.1": {
       "type": "package",

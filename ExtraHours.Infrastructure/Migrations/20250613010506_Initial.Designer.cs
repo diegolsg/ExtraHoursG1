@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ExtraHours.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250606214307_Initial")]
+    [Migration("20250613010506_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -101,6 +101,20 @@ namespace ExtraHours.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ExtraHourTypes");
+                });
+
+            modelBuilder.Entity("ExtraHours.Core.Models.Holidays", b =>
+                {
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Date");
+
+                    b.ToTable("Holidays");
                 });
 
             modelBuilder.Entity("ExtraHours.Core.Models.Permission", b =>

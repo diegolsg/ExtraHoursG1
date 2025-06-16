@@ -66,9 +66,10 @@ namespace ExtraHours.Infrastructure.Services
             return user;
         }
 
-        public async Task<User> GetByNameOrCodeAsync(string search)
+        public async Task<List<User>> GetByNameOrCodeAsync(string search)
         {
-            var user = await _userRepository.GetByNameOrCodeAsync(search);
+            var users = await _userRepository.GetByNameOrCodeAsync(search);
+            var user = users?.ToList();
             if (user == null) throw new Exception("User not found");
             return user;
         }
