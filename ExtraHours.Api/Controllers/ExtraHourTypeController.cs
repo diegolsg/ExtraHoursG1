@@ -35,5 +35,13 @@ namespace ExtraHours.Api.Controllers
             if (extraHourType == null) return NotFound();
             return Ok(extraHourType);
         }
+
+        [HttpGet("{id:int}")]
+        public async Task<IActionResult> GetExtraHourTypeById(int id)
+        {
+            var extraHourType = await _extraHourTypeService.GetByIdAsync(id);
+            if (extraHourType == null) return NotFound();
+            return Ok(extraHourType);
+        }
     }
 }

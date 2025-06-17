@@ -6,7 +6,7 @@ namespace ExtraHours.Core.Models
         public int LimitExtraHoursDay { get; set; }
         public int LimitExtraHoursWeek { get; set; }
         public int TotalHoursWeek { get; set; }
-        public DateTime Created { get; set; } = DateTime.Now;
-        public DateTime Updated { get; set; } = DateTime.Now;
+        public DateTime Created { get; set; }
+        public DateTime Updated { get; set; } 
     }
 }

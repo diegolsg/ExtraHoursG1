@@ -4,10 +4,12 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace ExtraHours.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class InitSchema : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,8 +18,7 @@ namespace ExtraHours.Infrastructure.Migrations
                 name: "ExtraHourTypes",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Id = table.Column<int>(type: "integer", nullable: false),
                     TypeHourName = table.Column<string>(type: "text", nullable: false),
                     Porcentaje = table.Column<string>(type: "text", nullable: false),
                     StartExtraHour = table.Column<TimeSpan>(type: "interval", nullable: false),
@@ -28,18 +29,6 @@ namespace ExtraHours.Infrastructure.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ExtraHourTypes", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Holidays",
-                columns: table => new
-                {
-                    Date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    Description = table.Column<string>(type: "text", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Holidays", x => x.Date);
                 });
 
             migrationBuilder.CreateTable(
@@ -74,8 +63,7 @@ namespace ExtraHours.Infrastructure.Migrations
                 name: "Settings",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Id = table.Column<int>(type: "integer", nullable: false),
                     LimitExtraHoursDay = table.Column<int>(type: "integer", nullable: false),
                     LimitExtraHoursWeek = table.Column<int>(type: "integer", nullable: false),
                     TotalHoursWeek = table.Column<int>(type: "integer", nullable: false),
@@ -188,6 +176,31 @@ namespace ExtraHours.Infrastructure.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "ExtraHourTypes",
+                columns: new[] { "Id", "Created", "EndExtraHour", "Porcentaje", "StartExtraHour", "TypeHourName", "Updated" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2025, 6, 15, 0, 0, 0, 0, DateTimeKind.Utc), new TimeSpan(0, 21, 0, 0, 0), "25%", new TimeSpan(0, 6, 0, 0, 0), "Diurna", new DateTime(2025, 6, 15, 0, 0, 0, 0, DateTimeKind.Utc) },
+                    { 2, new DateTime(2025, 6, 15, 0, 0, 0, 0, DateTimeKind.Utc), new TimeSpan(0, 6, 0, 0, 0), "75%", new TimeSpan(0, 21, 0, 0, 0), "Nocturna", new DateTime(2025, 6, 15, 0, 0, 0, 0, DateTimeKind.Utc) },
+                    { 3, new DateTime(2025, 6, 15, 0, 0, 0, 0, DateTimeKind.Utc), new TimeSpan(0, 21, 0, 0, 0), "100%", new TimeSpan(0, 6, 0, 0, 0), "Dominical/Festiva Diurna", new DateTime(2025, 6, 15, 0, 0, 0, 0, DateTimeKind.Utc) },
+                    { 4, new DateTime(2025, 6, 15, 0, 0, 0, 0, DateTimeKind.Utc), new TimeSpan(0, 6, 0, 0, 0), "150%", new TimeSpan(0, 21, 0, 0, 0), "Dominical/Festiva Nocturna", new DateTime(2025, 6, 15, 0, 0, 0, 0, DateTimeKind.Utc) }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Roles",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Administrador" },
+                    { 2, "Empleado" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Settings",
+                columns: new[] { "Id", "Created", "LimitExtraHoursDay", "LimitExtraHoursWeek", "TotalHoursWeek", "Updated" },
+                values: new object[] { 1, new DateTime(2025, 6, 15, 0, 0, 0, 0, DateTimeKind.Utc), 2, 12, 46, new DateTime(2025, 6, 15, 0, 0, 0, 0, DateTimeKind.Utc) });
+
             migrationBuilder.CreateIndex(
                 name: "IX_ExtraHours_ExtraHoursTypeId",
                 table: "ExtraHours",
@@ -219,9 +232,6 @@ namespace ExtraHours.Infrastructure.Migrations
         {
             migrationBuilder.DropTable(
                 name: "ExtraHours");
-
-            migrationBuilder.DropTable(
-                name: "Holidays");
 
             migrationBuilder.DropTable(
                 name: "Reports");

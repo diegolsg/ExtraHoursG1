@@ -54,5 +54,12 @@ namespace ExtraHours.Infrastructure.Services
                 await _extraHourTypeRepository.UpdateAsync(extraHourType);
             }
         }
+
+        public async Task<ExtraHourType> GetByIdAsync(int id)
+        {
+            var extraHourType = await _extraHourTypeRepository.GetByIdAsync(id);
+            if (extraHourType == null) throw new Exception("Extra Hour not found");
+            return extraHourType;
+        }
     }
 }

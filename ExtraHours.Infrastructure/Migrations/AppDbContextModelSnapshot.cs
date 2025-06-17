@@ -70,10 +70,7 @@ namespace ExtraHours.Infrastructure.Migrations
             modelBuilder.Entity("ExtraHours.Core.Models.ExtraHourType", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("timestamp with time zone");
@@ -98,6 +95,48 @@ namespace ExtraHours.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ExtraHourTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Created = new DateTime(2025, 6, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            EndExtraHour = new TimeSpan(0, 21, 0, 0, 0),
+                            Porcentaje = "25%",
+                            StartExtraHour = new TimeSpan(0, 6, 0, 0, 0),
+                            TypeHourName = "Diurna",
+                            Updated = new DateTime(2025, 6, 15, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Created = new DateTime(2025, 6, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            EndExtraHour = new TimeSpan(0, 6, 0, 0, 0),
+                            Porcentaje = "75%",
+                            StartExtraHour = new TimeSpan(0, 21, 0, 0, 0),
+                            TypeHourName = "Nocturna",
+                            Updated = new DateTime(2025, 6, 15, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Created = new DateTime(2025, 6, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            EndExtraHour = new TimeSpan(0, 21, 0, 0, 0),
+                            Porcentaje = "100%",
+                            StartExtraHour = new TimeSpan(0, 6, 0, 0, 0),
+                            TypeHourName = "Dominical/Festiva Diurna",
+                            Updated = new DateTime(2025, 6, 15, 0, 0, 0, 0, DateTimeKind.Utc)
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Created = new DateTime(2025, 6, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            EndExtraHour = new TimeSpan(0, 6, 0, 0, 0),
+                            Porcentaje = "150%",
+                            StartExtraHour = new TimeSpan(0, 21, 0, 0, 0),
+                            TypeHourName = "Dominical/Festiva Nocturna",
+                            Updated = new DateTime(2025, 6, 15, 0, 0, 0, 0, DateTimeKind.Utc)
+                        });
                 });
 
             modelBuilder.Entity("ExtraHours.Core.Models.Permission", b =>
@@ -167,6 +206,18 @@ namespace ExtraHours.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Roles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Administrador"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Empleado"
+                        });
                 });
 
             modelBuilder.Entity("ExtraHours.Core.Models.RolePermission", b =>
@@ -195,10 +246,7 @@ namespace ExtraHours.Infrastructure.Migrations
             modelBuilder.Entity("ExtraHours.Core.Models.Setting", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("timestamp with time zone");
@@ -218,6 +266,17 @@ namespace ExtraHours.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Settings");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Created = new DateTime(2025, 6, 15, 0, 0, 0, 0, DateTimeKind.Utc),
+                            LimitExtraHoursDay = 2,
+                            LimitExtraHoursWeek = 12,
+                            TotalHoursWeek = 46,
+                            Updated = new DateTime(2025, 6, 15, 0, 0, 0, 0, DateTimeKind.Utc)
+                        });
                 });
 
             modelBuilder.Entity("ExtraHours.Core.Models.User", b =>

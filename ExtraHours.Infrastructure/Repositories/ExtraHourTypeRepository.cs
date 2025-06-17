@@ -37,5 +37,15 @@ namespace ExtraHours.Infrastructure.Repositories
             _context.ExtraHourTypes.Update(entity);
             return _context.SaveChangesAsync();
         }
+
+        public async Task<ExtraHourType> GetByIdAsync(int id)
+        {
+            var extraHourType = await _context.ExtraHourTypes.FindAsync(id);
+            if (extraHourType == null)
+            {
+                throw new KeyNotFoundException($"ExtraHour with ID {id} not found");
+            }
+            return extraHourType;
+        }
     }
 }

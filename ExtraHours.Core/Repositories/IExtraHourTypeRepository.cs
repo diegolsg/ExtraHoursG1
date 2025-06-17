@@ -6,6 +6,7 @@ namespace ExtraHours.Core.Repositories
     {
         Task<IEnumerable<ExtraHourType>> GetAllAsync();
         Task<ExtraHourType> GetByTypeHourNameAsync(string typeHourName);
+        Task<ExtraHourType> GetByIdAsync(int id);
         Task AddAsync(ExtraHourType extraHourType);
         Task UpdateAsync(ExtraHourType extraHourType);
     }
