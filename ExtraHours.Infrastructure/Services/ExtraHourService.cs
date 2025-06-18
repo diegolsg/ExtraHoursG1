@@ -34,6 +34,23 @@ namespace ExtraHours.Infrastructure.Services
             }).ToList();
         }
 
+        public async Task<IEnumerable<ExtraHourDto>> GetAllWithDtoAsync()
+        {
+            var extraHours = await _extraHourRepository.GetAllWithDtoAsync();
+
+            return extraHours.Select(eh => new ExtraHourDto
+            {
+                Id = eh.Id,
+                UserId = eh.UserId,
+                Name = eh.Name,
+                Code = eh.Code,
+                Date = eh.Date,
+                StartTime = eh.StartTime,
+                EndTime = eh.EndTime,
+                Status = eh.Status
+            }).ToList();
+        }
+
         public async Task<ExtraHour> GetByIdAsync(int id)
         {
             var extraHour = await _extraHourRepository.GetByIdAsync(id);

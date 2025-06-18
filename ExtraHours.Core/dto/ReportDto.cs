@@ -2,9 +2,10 @@ namespace ExtraHours.Core.dto
 {
     public class ReportDto
     {
-        public int Id { get; set; }
-        public required string Title { get; set; }
-        public required string Description { get; set; }
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public required string Name { get; set; }
+        public required string Code { get; set; }
+        public decimal Salary { get; set; }
+        public decimal TotalExtraValue { get; set; }
+        public decimal TotalSalaryWithExtras => Salary + TotalExtraValue;
     }
 }

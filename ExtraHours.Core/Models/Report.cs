@@ -2,12 +2,10 @@ namespace ExtraHours.Core.Models
 {
     public class Report
     {
-        public int Id { get; set; }
-        public int UserId { get; set; }
-        public required string Title { get; set; }
-        public required string Description { get; set; }
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-
-        public User Users { get; set; }
+        public required string Name { get; set; }
+        public required string Code { get; set; }
+        public decimal Salary { get; set; }
+        public decimal TotalExtraValue { get; set; }
+        public decimal TotalSalaryWithExtras => Salary + TotalExtraValue;
     }
 }

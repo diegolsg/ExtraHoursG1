@@ -1,4 +1,5 @@
-﻿using ExtraHours.Core.Models;
+﻿using ExtraHours.Core.dto;
+using ExtraHours.Core.Models;
 using ExtraHours.Core.Repositories;
 using ExtraHours.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -8,7 +9,7 @@ namespace ExtraHours.Infrastructure.Repositories
     public class ExtraHourRepository : IExtraHourRepository
     {
         private readonly AppDbContext _context;
-        
+
         public ExtraHourRepository(AppDbContext context)
         {
             _context = context;
@@ -31,6 +32,24 @@ namespace ExtraHours.Infrastructure.Repositories
         {
             return await _context.ExtraHours
                 .Include(eh => eh.Users)
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<ExtraHourDto>> GetAllWithDtoAsync()
+        {
+            return await _context.ExtraHours
+                .Include(eh => eh.Users)
+                .Select(eh => new ExtraHourDto
+                {
+                    Id = eh.Id,
+                    UserId = eh.UserId,
+                    Name = eh.Users.Name,
+                    Code = eh.Users.Code,
+                    Date = eh.Date,
+                    StartTime = eh.StartTime,
+                    EndTime = eh.EndTime,
+                    Status = eh.Status,
+                })
                 .ToListAsync();
         }
 

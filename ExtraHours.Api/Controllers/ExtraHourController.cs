@@ -28,6 +28,13 @@ namespace ExtraHours.Api.Controllers
             return Ok(result);
         }
 
+        [HttpGet("dto")]
+        public async Task<IActionResult> GetAllExtraHoursWithDto()
+        {
+            var result = await _extraHourService.GetAllWithDtoAsync();
+            return Ok(result);
+        }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetExtraHourById(int id)
         {

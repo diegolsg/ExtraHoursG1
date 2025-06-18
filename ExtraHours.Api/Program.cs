@@ -70,6 +70,7 @@ builder.Services.AddScoped<IExtraHourTypeService, ExtraHourTypeService>();
 builder.Services.AddScoped<IExtraHourTypeRepository, ExtraHourTypeRepository>();
 builder.Services.AddScoped<ISettingRepository, SettingRepository>();
 builder.Services.AddScoped<ISettingService, SettingService>();
+builder.Services.AddScoped<ReportHoursService>();
 
 builder.Services.AddControllers();
 builder.Services.AddAuthorization();
