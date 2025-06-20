@@ -1,5 +1,4 @@
 ﻿using ExtraHours.Core.Models;
-using Nager.Date;
 using ExtraHours.Core.Repositories;
 using ExtraHours.Core.dto;
 using System.Globalization;
@@ -22,12 +21,6 @@ namespace ExtraHours.Core.Services
             _userRepository = userRepository;
         }
 
-        public static bool IsHoliday(DateTime date)
-        {
-            var publicHolidays = HolidaySystem.GetHolidays(date.Year, CountryCode.CO);
-            return publicHolidays.Any(x => x.Date == date.Date) || date.DayOfWeek == DayOfWeek.Sunday;
-        }
-
         public static List<TimeSpan> ListHours(TimeSpan startHour, TimeSpan endHour)
         {
             if (startHour >= endHour)
@@ -46,16 +39,22 @@ namespace ExtraHours.Core.Services
             return dayTime;
         }
 
-        public HourTypeEnum GetTypeHour(TimeSpan hour, DateOnly date)
+        public async Task<HourTypeEnum> GetTypeHourAsync(TimeSpan hour, DateOnly date)
         {
-            var setting = _extraHourTypeRepository.GetByTypeHourNameAsync("Diurna").Result;
-            bool isDayTime = hour >= setting.StartExtraHour && hour <= setting.EndExtraHour;
-            bool isHoliday = IsHoliday(date.ToDateTime(TimeOnly.MinValue));
+            var diurna = await _extraHourTypeRepository.GetByTypeHourNameAsync("Diurna");
+            var nocturna = await _extraHourTypeRepository.GetByTypeHourNameAsync("Nocturna");
+
+            bool isHoliday = await FeriadoValidator.EsFeriadoColombiaAsync(date.ToDateTime(TimeOnly.MinValue));
+
+            bool isDayTime = hour >= diurna.StartExtraHour && hour < diurna.EndExtraHour;
+            bool isNightTime = hour >= nocturna.StartExtraHour || hour < nocturna.EndExtraHour; // cruza medianoche
 
             if (isDayTime)
                 return isHoliday ? HourTypeEnum.FestDiurna : HourTypeEnum.Diurna;
-            else
+            if (isNightTime)
                 return isHoliday ? HourTypeEnum.FestNocturna : HourTypeEnum.Nocturna;
+
+            throw new Exception("Hora no clasificada en ningún tipo");
         }
 
         public async Task<List<ReportDto>> GetFullReportAsync()
@@ -109,7 +108,7 @@ namespace ExtraHours.Core.Services
 
                 foreach (var hour in hours)
                 {
-                    var hourType = GetTypeHour(hour, DateOnly.FromDateTime(date));
+                    var hourType = await GetTypeHourAsync(hour, DateOnly.FromDateTime(date));
                     var extraHourType = await _extraHourTypeRepository.GetByTypeHourNameAsync(hourType.ToString());
 
                     if (!decimal.TryParse(extraHourType.Porcentaje, out decimal porcentaje))
@@ -118,7 +117,7 @@ namespace ExtraHours.Core.Services
                         continue;
                     }
 
-                    totalExtraValue += hourlyRate * (porcentaje / 100m);
+                    totalExtraValue += hourlyRate * (1 + porcentaje / 100m);
                 }
 
                 if (reportByUser.ContainsKey(user.Code))
