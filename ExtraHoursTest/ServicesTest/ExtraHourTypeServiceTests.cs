@@ -1,54 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Xunit;
-using Moq;
-using ExtraHours.Infrastructure.Services;
+﻿using ExtraHours.Infrastructure.Services;
 using ExtraHours.Core.Repositories;
 using ExtraHours.Core.Models;
+using ExtraHours.Core.Services;
 using ExtraHours.Core.dto;
+using NSubstitute;
 
 namespace ExtraHours.Tests.Services
 {
     public class ExtraHourTypeServiceTests
     {
-        private readonly Mock<IExtraHourTypeRepository> _mockRepo;
-        private readonly ExtraHourTypeService _service;
+        private readonly IExtraHourTypeService _extraHourTypeService;
+        private readonly IExtraHourTypeRepository _extraHourTypeRepository;
 
         public ExtraHourTypeServiceTests()
         {
-            _mockRepo = new Mock<IExtraHourTypeRepository>();
-            _service = new ExtraHourTypeService(_mockRepo.Object);
+            _extraHourTypeRepository = Substitute.For<IExtraHourTypeRepository>();
+            _extraHourTypeService = new ExtraHourTypeService(_extraHourTypeRepository);
         }
 
         [Fact]
         public async Task GetAllAsync_ReturnsAllTypes()
         {
-            // Arrange
             var types = new List<ExtraHourType>
             {
                 new ExtraHourType { Id = 1, TypeHourName = "Nocturna", Porcentaje = "50%", StartExtraHour = TimeSpan.Zero, EndExtraHour = TimeSpan.Zero, Created = DateTime.UtcNow, Updated = DateTime.UtcNow }
             };
-            _mockRepo.Setup(r => r.GetAllAsync()).ReturnsAsync(types);
+            _extraHourTypeRepository.GetAllAsync().Returns(types);
 
-            // Act
-            var result = await _service.GetAllAsync();
+            var result = await _extraHourTypeService.GetAllAsync();
 
-            // Assert
             Assert.Single(result);
         }
 
         [Fact]
         public async Task GetByTypeHourNameAsync_ReturnsType()
         {
-            // Arrange
             var type = new ExtraHourType { Id = 1, TypeHourName = "Nocturna", Porcentaje = "50%", StartExtraHour = TimeSpan.Zero, EndExtraHour = TimeSpan.Zero, Created = DateTime.UtcNow, Updated = DateTime.UtcNow };
-            _mockRepo.Setup(r => r.GetByTypeHourNameAsync("Nocturna")).ReturnsAsync(type);
+            _extraHourTypeRepository.GetByTypeHourNameAsync("Nocturna").Returns(type);
 
-            // Act
-            var result = await _service.GetByTypeHourNameAsync("Nocturna");
+            var result = await _extraHourTypeService.GetByTypeHourNameAsync("Nocturna");
 
-            // Assert
             Assert.NotNull(result);
             Assert.Equal("Nocturna", result.TypeHourName);
         }
@@ -56,7 +47,6 @@ namespace ExtraHours.Tests.Services
         [Fact]
         public async Task AddAsync_CallsRepositoryAdd()
         {
-            // Arrange
             var dto = new ExtraHourTypeDto
             {
                 TypeHourName = "Nocturna",
@@ -65,22 +55,21 @@ namespace ExtraHours.Tests.Services
                 EndExtraHour = "06:00:00"
             };
 
-            // Act
-            await _service.AddAsync(dto);
+            ExtraHourType? captured = null;
+            _extraHourTypeRepository.AddAsync(Arg.Do<ExtraHourType>(e => captured = e)).Returns(Task.CompletedTask);
 
-            // Assert
-            _mockRepo.Verify(r => r.AddAsync(It.Is<ExtraHourType>(e =>
-                e.TypeHourName == dto.TypeHourName &&
-                e.Porcentaje == dto.Porcentaje &&
-                e.StartExtraHour == TimeSpan.Parse(dto.StartExtraHour) &&
-                e.EndExtraHour == TimeSpan.Parse(dto.EndExtraHour)
-            )), Times.Once);
+            await _extraHourTypeService.AddAsync(dto);
+
+            Assert.NotNull(captured);
+            Assert.Equal(dto.TypeHourName, captured.TypeHourName);
+            Assert.Equal(dto.Porcentaje, captured.Porcentaje);
+            Assert.Equal(TimeSpan.Parse(dto.StartExtraHour), captured.StartExtraHour);
+            Assert.Equal(TimeSpan.Parse(dto.EndExtraHour), captured.EndExtraHour);
         }
 
         [Fact]
         public async Task UpdateAsync_UpdatesAndCallsRepository()
         {
-            // Arrange
             var existing = new ExtraHourType
             {
                 Id = 1,
@@ -88,8 +77,8 @@ namespace ExtraHours.Tests.Services
                 Porcentaje = "50%",
                 StartExtraHour = TimeSpan.Zero,
                 EndExtraHour = TimeSpan.Zero,
-                Created = DateTime.UtcNow,
-                Updated = DateTime.UtcNow
+                Created = DateTime.Now,
+                Updated = DateTime.Now
             };
             var dto = new ExtraHourTypeDto
             {
@@ -98,31 +87,26 @@ namespace ExtraHours.Tests.Services
                 StartExtraHour = "23:00:00",
                 EndExtraHour = "07:00:00"
             };
-            _mockRepo.Setup(r => r.GetByTypeHourNameAsync("Nocturna")).ReturnsAsync(existing);
+            _extraHourTypeRepository.GetByTypeHourNameAsync("Nocturna").Returns(existing);
 
-            // Act
-            await _service.UpdateAsync("Nocturna", dto);
+            await _extraHourTypeService.UpdateAsync("Nocturna", dto);
 
-            // Assert
-            _mockRepo.Verify(r => r.UpdateAsync(It.Is<ExtraHourType>(e =>
+            await _extraHourTypeRepository.Received(1).UpdateAsync(Arg.Is<ExtraHourType>(e =>
                 e.TypeHourName == dto.TypeHourName &&
                 e.Porcentaje == dto.Porcentaje &&
                 e.StartExtraHour == TimeSpan.Parse(dto.StartExtraHour) &&
                 e.EndExtraHour == TimeSpan.Parse(dto.EndExtraHour)
-            )), Times.Once);
+            ));
         }
 
         [Fact]
         public async Task GetByIdAsync_ReturnsType_WhenExists()
         {
-            // Arrange
             var type = new ExtraHourType { Id = 1, TypeHourName = "Nocturna", Porcentaje = "50%", StartExtraHour = TimeSpan.Zero, EndExtraHour = TimeSpan.Zero, Created = DateTime.UtcNow, Updated = DateTime.UtcNow };
-            _mockRepo.Setup(r => r.GetByIdAsync(1)).ReturnsAsync(type);
+            _extraHourTypeRepository.GetByIdAsync(1).Returns(type);
 
-            // Act
-            var result = await _service.GetByIdAsync(1);
+            var result = await _extraHourTypeService.GetByIdAsync(1);
 
-            // Assert
             Assert.NotNull(result);
             Assert.Equal(1, result.Id);
         }
@@ -130,11 +114,9 @@ namespace ExtraHours.Tests.Services
         [Fact]
         public async Task GetByIdAsync_ThrowsException_WhenNotFound()
         {
-            // Arrange
-            _mockRepo.Setup(r => r.GetByIdAsync(2)).ReturnsAsync((ExtraHourType)null);
+            _extraHourTypeRepository.GetByIdAsync(2).Returns(Task.FromResult<ExtraHourType>(null!));
 
-            // Act & Assert
-            await Assert.ThrowsAsync<Exception>(() => _service.GetByIdAsync(2));
+            await Assert.ThrowsAsync<Exception>(() => _extraHourTypeService.GetByIdAsync(2));
         }
     }
 }

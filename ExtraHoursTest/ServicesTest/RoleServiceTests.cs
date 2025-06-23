@@ -1,41 +1,34 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using ExtraHours.Core.Repositories;
+using ExtraHours.Core.Services;
 using ExtraHours.Core.Models;
-using ExtraHours.Core.Repositories;
 using ExtraHours.Infrastructure.Services;
-using Moq;
-using Xunit;
+using NSubstitute;
 
 namespace ExtraHours.Infrastructure.Tests.Services
 {
     public class RoleServiceTests
     {
-        private readonly Mock<IRoleRepository> _roleRepositoryMock;
-        private readonly RoleService _roleService;
+        private readonly IRoleService _roleService;
+        private readonly IRoleRepository _roleRepository;
 
         public RoleServiceTests()
         {
-            _roleRepositoryMock = new Mock<IRoleRepository>();
-            _roleService = new RoleService(_roleRepositoryMock.Object);
+           _roleRepository = Substitute.For<IRoleRepository>();
+            _roleService = new RoleService(_roleRepository);
         }
 
         [Fact]
         public async Task GetAllRolesAsync_ReturnsMappedRoles()
         {
-            // Arrange
             var roles = new List<Role>
             {
                 new Role { Id = 1, Name = "Admin" },
                 new Role { Id = 2, Name = null }
             };
-            _roleRepositoryMock.Setup(r => r.GetAllRolesAsync())
-                .ReturnsAsync(roles);
+            _roleRepository.GetAllRolesAsync().Returns(roles);
 
-            // Act
             var result = await _roleService.GetAllRolesAsync();
 
-            // Assert
             var resultList = result.ToList();
             Assert.Equal(2, resultList.Count);
             Assert.Equal("Admin", resultList[0].Name);
@@ -45,18 +38,13 @@ namespace ExtraHours.Infrastructure.Tests.Services
         [Fact]
         public async Task CreateRole_CallsRepositoryAndReturnsRole()
         {
-            // Arrange
             var role = new Role { Id = 3, Name = "User" };
 
-            _roleRepositoryMock.Setup(r => r.AddRoleAsync(role))
-                .Returns(Task.CompletedTask)
-                .Verifiable();
+            _roleRepository.AddRoleAsync(role).Returns(Task.CompletedTask);
 
-            // Act
             var result = await _roleService.CreateRole(role);
 
-            // Assert
-            _roleRepositoryMock.Verify(r => r.AddRoleAsync(role), Times.Once);
+            await _roleRepository.Received(1).AddRoleAsync(role);
             Assert.Equal(role, result);
         }
     }
