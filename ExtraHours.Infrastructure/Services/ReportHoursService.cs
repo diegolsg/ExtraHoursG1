@@ -57,6 +57,18 @@ namespace ExtraHours.Core.Services
             throw new Exception("Hora no clasificada en ningún tipo");
         }
 
+        private string MapHourTypeEnumToDbName(HourTypeEnum type)
+        {
+            return type switch
+            {
+                HourTypeEnum.Diurna => "Diurna",
+                HourTypeEnum.Nocturna => "Nocturna",
+                HourTypeEnum.FestDiurna => "Dominical/Festiva Diurna",
+                HourTypeEnum.FestNocturna => "Dominical/Festiva Nocturna",
+                _ => throw new Exception("Tipo de hora no reconocido.")
+            };
+        }
+
         public async Task<List<ReportDto>> GetFullReportAsync()
         {
             var extraHours = await _extraHourRepository.GetAllWithDtoAsync();
@@ -109,7 +121,9 @@ namespace ExtraHours.Core.Services
                 foreach (var hour in hours)
                 {
                     var hourType = await GetTypeHourAsync(hour, DateOnly.FromDateTime(date));
-                    var extraHourType = await _extraHourTypeRepository.GetByTypeHourNameAsync(hourType.ToString());
+                    var hourTypeName = MapHourTypeEnumToDbName(hourType);
+                    var extraHourType = await _extraHourTypeRepository.GetByTypeHourNameAsync(hourTypeName);
+
 
                     if (!decimal.TryParse(extraHourType.Porcentaje, out decimal porcentaje))
                     {
