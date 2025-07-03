@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-lastest
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout repo
@@ -20,9 +20,9 @@ jobs:
       with:    
         dotnet-version: 9.0.x
 
-    - name: Restore dependecies
+    - name: Restore dependencies
       run: dotnet restore 
-    - name: test environment
+    - name: test Environment
       run: dotnet test
     - name: Build project
       run: dotnet build --no restore -c Release --verbosity normal
