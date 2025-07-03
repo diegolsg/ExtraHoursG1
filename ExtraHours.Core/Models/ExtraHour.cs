@@ -8,7 +8,7 @@ namespace ExtraHours.Core.Models {
         public string StartTime { get; set;}
         public string EndTime { get; set;}
         public string Status { get; set; } = "pendiente";
-        public DateTime Created { get; set; } = DateTime.Now;
-        public DateTime Updated { get; set; } = DateTime.Now;
+        public DateTime Created { get; set; } = DateTime.UtcNow;
+        public DateTime Updated { get; set; } = DateTime.UtcNow;
     }
 }
