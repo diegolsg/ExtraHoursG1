@@ -8,7 +8,6 @@ namespace ExtraHours.Infrastructure.Services
     public class ExtraHourService : IExtraHourService
     {
         private readonly IExtraHourRepository _extraHourRepository;
-
         public ExtraHourService(IExtraHourRepository extraHourRepository)
         {
             _extraHourRepository = extraHourRepository;
@@ -30,8 +29,23 @@ namespace ExtraHours.Infrastructure.Services
                 Status = eh.Status,
                 Created = eh.Created,
                 Updated = eh.Updated,
-                ExtraHoursTypeId = eh.ExtraHoursTypeId,
-                ExtraHoursType = eh.ExtraHoursType
+            }).ToList();
+        }
+
+        public async Task<IEnumerable<ExtraHourDto>> GetAllWithDtoAsync()
+        {
+            var extraHours = await _extraHourRepository.GetAllWithDtoAsync();
+
+            return extraHours.Select(eh => new ExtraHourDto
+            {
+                Id = eh.Id,
+                UserId = eh.UserId,
+                Name = eh.Name,
+                Code = eh.Code,
+                Date = eh.Date,
+                StartTime = eh.StartTime,
+                EndTime = eh.EndTime,
+                Status = eh.Status
             }).ToList();
         }
 
@@ -51,7 +65,6 @@ namespace ExtraHours.Infrastructure.Services
                 StartTime = extraHourDto.StartTime,
                 EndTime = extraHourDto.EndTime,
                 Status = extraHourDto.Status,
-                ExtraHoursTypeId = extraHourDto.ExtraHoursTypeId,
             };
 
             await _extraHourRepository.AddAsync(extraHour);

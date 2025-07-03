@@ -15,8 +15,6 @@ namespace ExtraHours.Core.dto
         public string Status { get; set; } = string.Empty;
         public DateTime Created { get; set; } = DateTime.UtcNow;
         public DateTime Updated { get; set; } = DateTime.UtcNow;
-        public int ExtraHoursTypeId { get; set; }
-        public ExtraHourType? ExtraHoursType { get; set; }
 
         public ExtraHourDto() { }
         public ExtraHourDto(ExtraHour extraHour)

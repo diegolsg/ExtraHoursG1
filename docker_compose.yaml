@@ -1,0 +1,40 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:15
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: suaza
+      POSTGRES_DB: extra-hours
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  backend:
+    build:
+      context: .
+      dockerfile: ExtraHours.Api/Dockerfile
+    container_name: extra-hours
+    depends_on:
+      - db
+    environment:
+      - ConnectionStrings__DefaultConnection=Host=db;Port=5432;Username=postgres;Password=suaza;Database=extra-hours
+    ports:
+      - "5011:5011"
+
+  frontend:
+    build:
+      context: ./amadeus-dashboard
+      dockerfile: Dockerfile
+    container_name: extra-hours-front
+    ports:
+      - "5137:5137"
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:

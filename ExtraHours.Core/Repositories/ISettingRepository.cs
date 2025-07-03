@@ -7,7 +7,6 @@ namespace ExtraHours.Core.Repositories
         Task<IEnumerable<Setting>> GetAllAsync();
         Task<Setting> GetByIdAsync(int id);
         Task AddAsync(Setting setting);
-        Task UpdateAsync(Setting setting);
-        Task DeleteAsync(int id);    
+        Task UpdateAsync(Setting setting); 
     }
 }

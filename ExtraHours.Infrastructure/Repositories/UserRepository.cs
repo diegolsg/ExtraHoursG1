@@ -2,7 +2,6 @@
 using ExtraHours.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
-
 namespace ExtraHours.Core.Repositories
 {
     public class UserRepository : IUserRepository
@@ -29,6 +28,12 @@ namespace ExtraHours.Core.Repositories
         }
 
         public async Task AddUserAsync(User user)
+        {
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task CreateUserAsync(User user)
         {
             if (user.RoleId == 0)
                 user.RoleId = 2;
@@ -66,9 +71,13 @@ namespace ExtraHours.Core.Repositories
             }
         }
 
-        public async Task<User?> GetByNameOrCodeAsync(string search)
+        public async Task<List<User>> GetByNameOrCodeAsync(string search)
         {
-            return await _context.Users.FirstOrDefaultAsync(u => u.Name == search || u.Code == search);
+            return await _context.Users
+                .Where(u =>
+                    u.Name.ToLower().Contains(search.ToLower()) ||
+                    u.Code.ToLower().Contains(search.ToLower()))
+                .ToListAsync();
         }
 
         public async Task<User?> GetByCodeAsync(string code)

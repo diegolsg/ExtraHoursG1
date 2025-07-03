@@ -1,46 +1,35 @@
 using System.Text;
-using ExtraHours.Core.Repositories;
-using ExtraHours.Core.Services;
-using ExtraHours.Infrastructure.Data;
-using ExtraHours.Infrastructure.Services;
-using ExtraHours.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using ExtraHours.Core.Repositories;
+using ExtraHours.Core.Services;
+using ExtraHours.Infrastructure.Data;
+using ExtraHours.Infrastructure.Repositories;
+using ExtraHours.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
-
+// === DATABASE ===
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(connectionString));
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseNpgsql(connectionString));
 
-var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
-
+// === CORS ===
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(name: MyAllowSpecificOrigins,
-        policy =>
-        {
-            policy.WithOrigins("http://localhost:5173") 
-            .AllowAnyMethod()
-            .AllowAnyHeader();
-        });
-});
-
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAll", builder =>
+    options.AddPolicy("AllowAll", policy =>
     {
-        builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
     });
 });
 
+// === AUTH JWT ===
 var jwtSettings = builder.Configuration.GetSection("Jwt");
 var key = Encoding.UTF8.GetBytes(jwtSettings["Key"] ?? "secret_key");
-
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
@@ -59,32 +48,47 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
+// === DEPENDENCY INJECTION ===
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IExtraHourService, ExtraHourService>();
 builder.Services.AddScoped<IExtraHourRepository, ExtraHourRepository>();
 builder.Services.AddScoped<IRoleService, RoleService>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+builder.Services.AddScoped<IExtraHourTypeService, ExtraHourTypeService>();
+builder.Services.AddScoped<IExtraHourTypeRepository, ExtraHourTypeRepository>();
+builder.Services.AddScoped<ISettingService, SettingService>();
+builder.Services.AddScoped<ISettingRepository, SettingRepository>();
+builder.Services.AddScoped<ReportHoursService>();
 builder.Services.AddScoped<EmailService>();
 
+// === MVC, AUTH, SWAGGER ===
 builder.Services.AddControllers();
 builder.Services.AddAuthorization();
-
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "ExtraHours API",
+        Version = "v1"
+    });
+});
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+// === SWAGGER SIEMPRE HABILITADO ===
+app.UseSwagger();
+app.UseSwaggerUI(c =>
 {
-    app.MapOpenApi();
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "ExtraHours API V1");
+    c.RoutePrefix = string.Empty; // Para que Swagger esté en la raíz "/"
+});
 
-app.UseCors(MyAllowSpecificOrigins);
+// === MIDDLEWARES ===
 app.UseCors("AllowAll");
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection(); // Desactiva si no configuras HTTPS local o en Docker
+app.UseAuthentication();
+app.UseAuthorization();
 app.MapControllers();
 app.Run();

@@ -41,6 +41,7 @@ namespace ExtraHours.Api.Controllers
                 Name = userDto.Name,
                 PhoneNumber = userDto.PhoneNumber,
                 Email = userDto.Email,
+                Salary = userDto.Salary,
                 RoleId = 2, 
                 Password = "" 
             };
