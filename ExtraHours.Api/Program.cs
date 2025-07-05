@@ -12,7 +12,7 @@ using ExtraHours.Infrastructure.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // === DATABASE ===
-var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL") 
+var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL")
                        ?? builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(connectionString));
@@ -92,4 +92,11 @@ app.UseCors("AllowAll");
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
+
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.EnsureCreated();
+}
+
 app.Run();
