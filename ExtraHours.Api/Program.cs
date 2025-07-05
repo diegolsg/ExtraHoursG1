@@ -12,7 +12,8 @@ using ExtraHours.Infrastructure.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // === DATABASE ===
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL") 
+                       ?? builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(connectionString));
 
