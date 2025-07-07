@@ -10,7 +10,7 @@ namespace ExtraHours.Infrastructure.Data
         public AppDbContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
-            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=extra_hours;Username=postgres;Password=Marijulihonne0610#");
+            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=Extra_Hours;Username=postgres;Password=12345*");
 
             return new AppDbContext(optionsBuilder.Options);
         }
