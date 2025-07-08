@@ -14,6 +14,13 @@ Este proyecto es una aplicación **backend** para el **registro, gestión y cál
 - Extracción de días feriados desde sitio web.
 
 ## 🧱 Estructura del proyecto
+**Flujo del empleado**
+![1](https://github.com/user-attachments/assets/515b95c9-f751-4f5c-8341-c5564dcabb24)
+
+**Flujo administrador**
+![2](https://github.com/user-attachments/assets/8fb857e3-4b7f-43ea-8952-52c42d36aecd)
+
+## <img width="590" alt="image" src="https://github.com/user-attachments/assets/ee03ba8d-5f73-492c-abf0-b0c2bacd0ff3" />
 
 El proyecto está organizado en los siguientes directorios:
 
@@ -22,7 +29,8 @@ El proyecto está organizado en los siguientes directorios:
 - **ExtraHours.Infrastructure/**: Contiene la configuración de acceso a datos y otras dependencias de infraestructura.
 - **ExtraHoursTest/**: Directorio para pruebas unitarias y de integración.
 - **amadeus-dashboard/**: Contiene el código fuente del frontend.
-## 🛠️ Tecnologías utilizadas
+
+🛠️ Tecnologías utilizadas
 
 - **.NET** (C#)
 - **ASP.NET Web API**
