@@ -79,6 +79,11 @@ builder.Services.AddAuthorization();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddScoped<IRegistroHoraRepository, RegistroHoraRepository>();
+builder.Services.AddScoped<IRegistroHoraService, RegistroHoraService>();
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

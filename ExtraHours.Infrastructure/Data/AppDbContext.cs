@@ -15,6 +15,7 @@ namespace ExtraHours.Infrastructure.Data
         public DbSet<Permission> Permissions { get; set; }
         public DbSet<ExtraHour> ExtraHours { get; set; }
         public DbSet<ExtraHourType> ExtraHourTypes { get; set; }
+        public DbSet<RegistroHora> RegistroHoras { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ExtraHourType>()
