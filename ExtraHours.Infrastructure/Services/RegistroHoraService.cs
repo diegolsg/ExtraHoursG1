@@ -31,9 +31,9 @@ namespace ExtraHours.Infrastructure.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<ExtraHour>> ObtenerHorasPorUsuarioAsync(int userId)
+        public async Task<IEnumerable<RegistroHora>> ObtenerHorasPorUsuarioAsync(int userId)
         {
-            return await _context.ExtraHours
+            return await _context.RegistroHoras
                 .Where(e => e.UserId == userId)
                 .ToListAsync();
         }

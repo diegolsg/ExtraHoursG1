@@ -7,6 +7,7 @@ namespace ExtraHours.Core.Services
     public interface IRegistroHoraService
     {
         Task RegistrarHoraAsync(CreateExtraHourDto dto);
-        Task<IEnumerable<ExtraHour>> ObtenerHorasPorUsuarioAsync(int userId);
+        Task<IEnumerable<RegistroHora>> ObtenerHorasPorUsuarioAsync(int userId);
+
     }
 }
