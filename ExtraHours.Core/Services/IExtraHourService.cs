@@ -12,5 +12,6 @@ namespace ExtraHours.Core.Services
         Task UpdateAsync(int id, ExtraHourDto extraHourDto);
         Task DeleteAsync(int id);
         Task HourStatus(int id, string status);
+        Task<List<ExtraHourSummaryDto>> GetExtraHoursSummaryAsync();
     }
 }

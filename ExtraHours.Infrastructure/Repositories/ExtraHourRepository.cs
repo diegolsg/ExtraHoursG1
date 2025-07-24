@@ -31,20 +31,20 @@ namespace ExtraHours.Infrastructure.Repositories
         public async Task<IEnumerable<ExtraHour>> GetAllAsync()
         {
             return await _context.ExtraHours
-                .Include(eh => eh.Users)
+                .Include(eh => eh.User)
                 .ToListAsync();
         }
 
         public async Task<IEnumerable<ExtraHourDto>> GetAllWithDtoAsync()
         {
             return await _context.ExtraHours
-                .Include(eh => eh.Users)
+                .Include(eh => eh.User)
                 .Select(eh => new ExtraHourDto
                 {
                     Id = eh.Id,
                     UserId = eh.UserId,
-                    Name = eh.Users.Name,
-                    Code = eh.Users.Code,
+                    Name = eh.User.Name,
+                    Code = eh.User.Code,
                     Date = eh.Date,
                     StartTime = eh.StartTime,
                     EndTime = eh.EndTime,

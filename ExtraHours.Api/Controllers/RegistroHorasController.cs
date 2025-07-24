@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using ExtraHours.Core.Dto;
+using ExtraHours.Core.dto;
 using ExtraHours.Core.Services;
 
 namespace ExtraHours.Api.Controllers
@@ -28,5 +28,13 @@ namespace ExtraHours.Api.Controllers
             var horas = await _registroHoraService.ObtenerHorasPorUsuarioAsync(userId);
             return Ok(horas);
         }
+
+        [HttpGet("summary")]
+        public async Task<IActionResult> GetHorasConUsuario()
+        {
+            var data = await _registroHoraService.ObtenerHorasConUsuarioAsync();
+            return Ok(data);
+        }
+
     }
 }

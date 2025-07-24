@@ -6,7 +6,7 @@ namespace ExtraHours.Core.dto
     {
         public int Id { get; set; }
         public int UserId { get; set; }
-        public User? Users { get; set; }
+        public User? User { get; set; }
         public string Name { get; set; }
         public string Code { get; set; }
         public string Date { get; set; }
@@ -20,14 +20,13 @@ namespace ExtraHours.Core.dto
         public ExtraHourDto(ExtraHour extraHour)
         {
             Id = extraHour.Id;
-            UserId = extraHour.UserId; 
-            Users = extraHour.Users;
+            UserId = extraHour.UserId;
+            User = extraHour.User;
             Date = extraHour.Date;
             StartTime = extraHour.StartTime;
             EndTime = extraHour.EndTime;
             Status = extraHour.Status;
             Created = extraHour.Created;
-            Updated = extraHour.Updated;
         }
     }
 }

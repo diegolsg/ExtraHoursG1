@@ -7,6 +7,7 @@ using ExtraHours.Core.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using ExtraHours.Core.dto;
 
 namespace ExtraHours.Infrastructure.Services
 {

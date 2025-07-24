@@ -4,7 +4,7 @@ namespace ExtraHours.Core.Models
     {
         public int Id { get; set; }
         public int UserId { get; set; }
-        public User Users { get; set; }
+        public User User { get; set; }
 
         public string Date { get; set; }
         public string StartTime { get; set; }
@@ -16,5 +16,6 @@ namespace ExtraHours.Core.Models
         public string Status { get; set; } = "pendiente";
         public DateTime Created { get; set; } = DateTime.Now;
         public DateTime Updated { get; set; } = DateTime.Now;
+        public RegistroHora RegistroHora { get; set; }
     }
 }

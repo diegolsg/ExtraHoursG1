@@ -1,5 +1,5 @@
 using ExtraHours.Core.Models;
-using ExtraHours.Core.Dto;
+using ExtraHours.Core.dto;
 
 
 namespace ExtraHours.Core.Services
@@ -8,6 +8,8 @@ namespace ExtraHours.Core.Services
     {
         Task RegistrarHoraAsync(CreateExtraHourDto dto);
         Task<IEnumerable<RegistroHora>> ObtenerHorasPorUsuarioAsync(int userId);
+        Task<IEnumerable<ExtraHourSummaryDto>> ObtenerHorasConUsuarioAsync();
+
 
     }
 }

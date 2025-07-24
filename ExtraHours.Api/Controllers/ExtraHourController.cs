@@ -61,5 +61,12 @@ namespace ExtraHours.Api.Controllers
                 return NotFound(ex.Message);
             }
         }
+        [HttpGet("summary")]
+        public async Task<IActionResult> GetSummary()
+        {
+            var data = await _extraHourService.GetExtraHoursSummaryAsync();
+            return Ok(data);
+        }
+
     }
 }
